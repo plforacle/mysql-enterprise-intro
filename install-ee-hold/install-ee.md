@@ -2,11 +2,12 @@
 
 ## Introduction
 
-Developers can access the full range of MySQL Enterprise Edition features for free while learning, developing, and prototyping.You wil be using the latest available download  from Oracle Technical Resources (OTR, formerly Oracle Technology Network, OTN). For more details review the   [MySQL Enterprise Edition Downloads page] https://www.oracle.com/mysql/technologies/mysql-enterprise-edition-downloads.html
+Detailed Installation of MySQL Enterprise Edition 8 and MySQL Shell on Linux
+
+Objective: RPM Installation of MySQL 8 Enterprise on Linux
 
 
-
-Objective: Detailed Installation of MySQL Enterprise Edition 8 and MySQL Shell on Linux
+RPM Installation of MySQL Enterprise 8 on Linux
 
 Estimated Time: 15 minutes
 
@@ -22,9 +23,9 @@ In this lab, you will:
 ### Prerequisites
 
 This lab assumes you have:
+* A working Oracle Linux machine
+* The MySQL Enterprise rpms for Oracle Linux inside /workshop directory
 
-* Completed Labs 1 and 2
-* or a working Oracle Linux machine
 
 ### Lab standard
 
@@ -36,7 +37,8 @@ Pay attention to the prompt, to know where execute the commands
 * ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
   
-## Task 1: Download OTN MySQL Enterprise Edition  
+## Task 1: Install MySQL Enterprise Edition using Linux RPM's
+
 
 1. Connect to **myserver** instance using Cloud Shell (**Example:** ssh -i ~/.ssh/id_rsa opc@132.145.17….)
 
@@ -45,18 +47,6 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
     ![CONNECT](./images/ssh-login-2.png " ")
-
-1. Get  OTN MySQL Enterprise Edition package
-
-    ```
-    <copy>wget 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/_85tMv-_I0WRJRAuHI9StGHfo3WXtAsSbpslsOIqIu2hsHgmKc8n7zmhk-5KvVw8/n/idazzjlcjqzj/b/mysql-ee-downloads/o/Oracle%20Technical%20Resource(OTR)/mysql-enterprise-9.2.0_el8_x86_64_bundle.tar'</copy>
-    ```
-
-
-## Task 1: Install MySQL Enterprise Edition using Linux RPM's
-
-
-
 
 
 2. We have the required software available in **/workshop** directory. But in security perspective, it's important to install only the software that is required. For this reason create a directory called not_needed and move there the rpms that we don't need
@@ -221,7 +211,6 @@ You may now **proceed to the next lab**
 
 ## Learn More
 
-* [MySQL Enterprise Edition](https://www.oracle.com/mysql/enterprise/)
 * [MySQL Linux Installation](https://dev.mysql.com/doc/en/binary-installation.html)
 * [MySQL Shell Installation](https://dev.mysql.com/doc/mysql-shell/en/mysql-shell-install.html)
 
