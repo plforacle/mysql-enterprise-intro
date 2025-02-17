@@ -15,12 +15,7 @@
         },
 
         {
-          "title": "Lab 1: Create a HeatWave instance ",
-          "filename": "../../create-heatwave/create-heatwave.md"
-        },
-
-        {
-          "title": "Lab 2: Create a Compute instance ",
+          "title": "Lab 1: Create a Compute instance ",
           "filename": "../../create-compute/create-compute.md"
         },
 

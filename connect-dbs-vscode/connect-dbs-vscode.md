@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab you will setup MySQL Shell for Visual Studio Code, and connect to the HeatWave instance you created in Lab 1 from VS Code.
+Set up a Virtual Cloud Network (VCN) to connect your Linux instance to the internet. You will configure all the components needed to create your virtual network.
 
 _Estimated Time:_ 30 minutes
 

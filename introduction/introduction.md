@@ -38,4 +38,4 @@ You may now **proceed to the next lab**
 
 - **Author** - Perside Foster, MySQL Solution Engineering
 - **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March  2025
