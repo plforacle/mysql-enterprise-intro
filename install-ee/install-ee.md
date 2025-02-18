@@ -89,16 +89,40 @@ This lab assumes you have:
 3. List all running processes and filter for those containing "mysqld" in their command line
     ```
     <copy>ps -ef | grep mysqld</copy>
+
     ``` 
-4. Search for the phrase "temporary password" in the "/var/log/mysqld.log" file, ignoring case sensitivity
+
+## Task 4: Change root password and create admin account
+
+1. Search for the phrase "temporary password" in the "/var/log/mysqld.log" file, ignoring case sensitivity
     ```
     <copy>sudo grep -i 'temporary password' /var/log/mysqld.log</copy>
     ```
     
-5. Connect to MySQL with MySQL Shell
+2. Login to MySQL using password retrieved in previous step
     ```
     <copy>mysqlsh -uroot -hlocalhost -p</copy>
-    ```  
+    ``` 
+3. Change root password
+    ```
+    <copy>ALTER USER 'root'@'localhost' IDENTIFIED BY 'Welcome#123';</copy>
+    ```   
+4. Show MySQL server  status
+    ```
+    <copy>\status</copy>
+    ```
+5. The root account can connect only locally, so we create now the 'admin'@'%' account that can connect remotely
+    ```
+    <copy>CREATE USER 'admin'@'%' IDENTIFIED BY 'Welcome#123';</copy>
+    ```
+
+    ```
+    <copy> GRANT ALL ON *.* TO admin@'%' WITH GRANT OPTION;</copy>
+    ```
+
+    ```
+    <copy>\q</copy>
+    ```
 
 
 You may now **proceed to the next lab**.
