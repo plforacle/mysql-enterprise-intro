@@ -25,24 +25,10 @@
         },
 
         {
-          "title": "Lab 4: Use HeatWave In-database LLM to Generate and Summarize Content",
-          "filename": "../../generate-content/generate-content.md"
+          "title": "Lab 3: Setup Sakila Sample Database",
+          "filename": "../../setup-sakila/setup-sakila.md"
         },
 
-        {
-          "title": "Lab 5: Perform Retrieval Augmented Generation",
-          "filename": "../../vector-search/vector-search.md"
-        },
-
-        {
-          "title": "Lab 6: Build HeatWave RAG Chat Application",
-          "filename": "../../develop-app/develop-app.md"
-        },
-
-        {
-          "title": "Stop Services",
-          "filename": "../../stop-services/stop-services.md"
-        },
 
         {
             "title": "Need Help?",
