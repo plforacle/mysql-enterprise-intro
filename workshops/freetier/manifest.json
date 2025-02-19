@@ -28,7 +28,11 @@
           "title": "Lab 3: Setup Sakila Sample Database",
           "filename": "../../setup-sakila/setup-sakila.md"
         },
+        {
 
+          "title": "Lab 4: Build and Test Apache/ PHP/ MySQL Web Application ",
+          "filename": "../../develop/develop.md"
+        },
 
         {
             "title": "Need Help?",
