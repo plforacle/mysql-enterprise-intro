@@ -1,18 +1,39 @@
 # Introduction
 
-MySQL Enterprise Edition includes the most comprehensive set of advanced features, management tools, and technical support to achieve the highest levels of MySQL scalability, security, reliability, and uptime. It reduces the risk, cost, and complexity in developing, deploying, and managing MySQL applications.
+MySQL Enterprise Edition provides developers with a comprehensive set of advanced features for building highly scalable, secure, and highly available applications. It is a popular choice among developers for several reasons:
 
-MySQL Enterprise Edition benefits
-Innovate faster
-Simplify data management and reach new levels of agility with the latest innovations in MySQL Enterprise Edition. Deliver MySQL database applications with enterprise security, high availability, and scalability.
+High Performance: MySQL Enterprise Edition offers high-performance capabilities, including advanced indexing, caching, and query optimization, which enable developers to build fast and scalable applications.
 
-Protect your organization’s data
-In today’s digital world, data is one of your organization’s valuable assets. MySQL Enterprise Edition helps protect your data using advanced security features, including encryption at rest and in transit, database auditing, database firewall, and database masking.
+Advanced Security: MySQL Enterprise Edition provides advanced security features, such as encryption, access control, and auditing, which help developers protect sensitive data and meet regulatory requirements.
 
-Meet regulatory requirements
-Industry and government regulations, such as the General Data Protection Regulation (GDPR), Payment Card Industry (PCI), and Health Insurance Portability and Accountability Act (HIPPA), include strict privacy and data protection rules. MySQL Enterprise Edition lets organizations satisfy regulatory requirements by protecting data throughout its lifecycle.
+Reliability and Uptime: MySQL Enterprise Edition includes features like replication, clustering, and high availability, which ensure that databases are always available and can recover quickly from failures.
 
-Estimated Workshop Time: 1 hour
+Simplified Database Administration: MySQL Enterprise Edition provides tools like MySQL Enterprise Monitor, MySQL Workbench, and MySQL Enterprise Backup, which simplify database administration tasks, such as monitoring, backup, and recovery.
+
+Support and Services: MySQL Enterprise Edition comes with 24/7 support, which provides developers with access to expert technical support, bug fixes, and security patches.
+
+Scalability: MySQL Enterprise Edition supports large-scale databases and high-traffic applications, making it a popular choice for developers who need to build scalable and high-performance applications.
+
+Integration with Other Tools: MySQL Enterprise Edition integrates well with other tools and technologies, such as Oracle, Microsoft, and SAP, making it a popular choice for developers who need to integrate their database with other systems.
+
+Cost-Effective: MySQL Enterprise Edition is a cost-effective solution compared to other commercial databases, making it a popular choice for developers who need to build high-performance applications on a budget.
+
+Open-Source Compatibility: MySQL Enterprise Edition is compatible with the open-source version of MySQL, making it easy for developers to migrate their applications to the enterprise edition.
+
+Support for JavaScript stored programs: JavaScript stored programs enable DBAs and developers to build richer, modern, more powerful apps within the MySQL Server. Developers can express complex programming logic directly inside the MySQL Server, minimizing data movement between the database server and applications.
+
+Some of the key industries where MySQL Enterprise Edition is widely used include:
+
+- Web and mobile applications
+- Social media and online communities
+- E-commerce and retail
+- Financial services and banking
+- Healthcare and life sciences
+- Government and public sector
+
+Overall, MySQL Enterprise Edition is a popular choice among developers due to its high performance, advanced security, reliability, and scalability, as well as its cost-effectiveness and compatibility with other tools and technologies.
+
+Estimated Workshop Time: 90 minutes
 
 [](youtube:RJ9p5tUzlmY)
 
@@ -21,12 +42,11 @@ Estimated Workshop Time: 1 hour
 
 In this lab, you will be guided through the following steps:
 
-1. Install MySQL EE
+1. Install MySQL Enterprise Edition (Developer Download from Oracle OTN) 
 2. Install Sample Database Sakila
-3. Verify install
-4. Install and test Lamp
-5. Enable and explore Database Management for MySQL
-
+3. Create JavaScript stored program  / Function
+4. Install and test Linux Apache MySQL(LAMP) Development Stack
+5. Deploy Sample application using Sakilaa data and MySQL JavaScript Function
 
 You may now **proceed to the next lab**
 
