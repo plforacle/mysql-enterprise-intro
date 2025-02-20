@@ -13,6 +13,7 @@ In this lab, you will be guided through the following tasks:
 
 - Install  Sakila
 - Explore the Sakila Database in MySQL
+- Create and test a JavaScript Stored Function
 
 
 
@@ -26,42 +27,57 @@ This lab assumes you have:
 
 1. Connect to **myserver** instance using Cloud Shell (**Example:** ssh -i  ~/.ssh/id_rsa opc@132.145.17….)
 
-    ```
+    ```bash
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```
 
     ![CONNECT](./images/ssh-login-2.png " ")
 
 1. Change to home directory
-    ```
+
+    ```bash
     <copy>cd /home/opc</copy>
     ```
+
 2. Download the Sakila Database
-    ```    
+
+    ```bash    
     <copy>wget https://downloads.mysql.com/docs/sakila-db.tar.gz</copy>
     ```
+
 3. Extract the contents of the "sakila-db.tar.gz" archive file. you should see two .sql files: sakila-data.sql and sakila-schema.sql
-    ```
+
+    ```bash
     <copy>tar -xvf sakila-db.tar.gz</copy>
     ```
+
 4. Change to the sakila directory
-    ```
+
+    ```bash
     <copy>cd sakila-db</copy>
     ```
+
 5. Connect to the MySQL server. Enter your password when prompted
-    ```
+
+    ```bash
     <copy>mysqlsh -uadmin -hlocalhost -p</copy>
     ```
+
 6. Execute the sakila-schema.sql script to create the database structure
-    ```
+
+    ```bash
     <copy>SOURCE sakila-schema.sql;</copy>
     ```
+
 7. Execute the sakila-data.sql script to populate the database structure
-    ```
+
+    ```bash
     <copy>SOURCE sakila-data.sql;</copy>
     ```
-8 Verify the installation
-    ```
+
+8. Verify the installation
+
+    ```bash
     <copy>show databases;</copy>
     ```
 
@@ -69,35 +85,47 @@ This lab assumes you have:
 
 1. Point to the sakila dabase
 
-    ```
+    ```bash
     <copy>use sakila;</copy>
     ```
+
 2. List the sakila tables
-    ```
+
+    ```bash
     <copy>show tables;</copy>
     ```
+
 3. Here is the ERD (Entity Relationship Diagram) of the Sakila Database.
 
     ![Sakila ERD](./images/sakila-erd.png "Sakila ERD")
 
 4. Take a look at the actor table
-    ```
+
+    ```bash
     <copy>describe actor;</copy>
     ```
+
 5. List data from the actor table
-    ```
+
+    ```bash
     <copy>SELECT * FROM actor;</copy>
     ```
-3. List data from the film table
-    ```
+
+6. List data from the film table
+
+    ```bash
     <copy>SELECT * FROM film;</copy>
-    ``` 
-3. List data from the film_actor view
     ```
+
+7. List data from the film_actor view
+
+    ```bash
     <copy>SELECT * FROM sakila.film_actor;</copy>
-    ``` 
-4. Find Overdue DVDs 
     ```
+
+8. Find Overdue DVDs
+
+    ```bash
     <copy>SELECT CONCAT(customer.last_name, ', ', customer.first_name) AS customer,
            address.phone, film.title
            FROM rental INNER JOIN customer ON rental.customer_id = customer.customer_id
@@ -110,19 +138,109 @@ This lab assumes you have:
            LIMIT 5;</copy>
     ```
 
-5. Exit
-    ```
+9. Exit
+
+    ```bash
     <copy>\q</copy>
     ```
 
+## Task 3: Create and test a MySQL JavaScript Stored Function
+
+MySQL now supports writing stored functions and stored procedures using JavaScript. Please note that this functionality is only available in MySQL Enterprise Edition.  Let's create a stored function with a complex business logic
+
+- The Business Rules
+
+Let’s assume we have a requirement to return a given number of seconds in a format that includes the number of hours, minutes, and seconds represented by this number. We also need to have two different formats. The first format is a short format that would return the data using the following format: hh:mm:ss. The second, long, format would return the data using h hours m minutes s seconds. Additional requirements for the long format include:
+
+If the number of hours, minutes, or seconds is 0, do not include it in the output.
+If the number of hours, minutes, or seconds is 1, use the singular version of the word; otherwise, use the plural.
+
+Creating a MySQL stored function to handle this would be possible, but it might be longer and more involved. Using Javascript is fairly straightforward.
+
+1. Setup  MLE Component when using JavaScript. As part of enabling Javascript SP: INSTALL COMPONENT 'file://component_mle';
+This  is a prerequisite step in the OS shell that runs before installing the MLE component. 
+
+2. First set SELinux to permissive mode
+
+    ```bash
+    <copy>sudo setenforce 0</copy>
+    ```
+
+3. Login to MySQL 
+
+    ```bash
+    <copy>mysqlsh -uadmin -hlocalhost -p </copy>
+    ```
+
+4. Install the component file
+
+    ```bash
+    <copy>INSTALL COMPONENT 'file://component_mle'; </copy>
+    ```
+
+    ```bash
+    <copy>\q</copy>
+    ```
+
+5. Enforce SELinux
+
+    ```bash
+    <copy>sudo setenforce 1</copy>
+    ```
+
+6. Log  back into MySQL
+
+    ```bash
+    <copy>mysqlsh -uadmin -hlocalhost -p </copy>
+    ```
+
+7. Create the **secondsToHoursMinsSecs** function
+
+    ```bash
+    <copy>create function secondsToHoursMinsSecs(seconds double, format varchar(5))
+    returns varchar(256) DETERMINISTIC language javascript as $$
+    if(format !== 'long') format = 'short'
+    const hrs = Math.floor(seconds/3600)
+    const mins = Math.floor((seconds % 3600) / 60)
+    const secs = (seconds % 60)
+    switch(format.toLowerCase()){
+        case 'short':
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+            break
+        case 'long':
+            let lng = ''
+            if(hrs > 0) lng += `${hrs} hour${hrs > 1 ? 's' : ''} `
+            if(mins > 0) lng += `${mins} minute${mins > 1 ? 's' : ''} `
+            if(secs > 0) lng += `${secs} second${secs > 1 ? 's' : ''}`
+            return lng.trim()
+            break
+    }
+$$; </copy>
+    ```
+8. Test the **secondsToHoursMinsSecs** function in short mode
+
+    ```bash
+    <copy>select secondsToHoursMinsSecs(1234, 'short') as result;</copy>
+    ```
+9. Test the **secondsToHoursMinsSecs** function in long mode
+
+    ```bash
+    <copy>select secondsToHoursMinsSecs(1234, 'long') as result; </copy>
+    ```
+10. Exit 
+
+    ```bash
+    <copy>\q</copy>
+    ```
 
 You may now **proceed to the next lab**.
 
 ## Learn More
 
-- [MySQL Enterprise Edition](https://www.oracle.com/mysql/enterprise/)
-- [MySQL Linux Installation](https://dev.mysql.com/doc/en/binary-installation.html)
-- [MySQL Shell Installation](https://dev.mysql.com/doc/mysql-shell/en/mysql-shell-install.html)
+- [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/sakila-introduction.html)
+- [JavaScript in MySQL](https://blogs.oracle.com/mysql/post/more-javascript-in-mysql)
+- [Introducing JavaScript support in MySQL](https://blogs.oracle.com/mysql/post/introducing-javascript-support-in-mysql)
+
 
 ## Acknowledgements
 
