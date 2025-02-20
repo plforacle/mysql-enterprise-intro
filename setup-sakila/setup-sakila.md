@@ -1,4 +1,4 @@
-# Setup Sakila Sample Database
+# Setup Sakila Sample Database and JavaScript Function
 
 ## Introduction
 

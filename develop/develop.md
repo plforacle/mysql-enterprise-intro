@@ -1,12 +1,16 @@
-# Develop MySQL HeatWave App with LAMP
+# Build and Test Apache/ PHP/ MySQL Web Application
 
 ## Introduction
 
-MySQL HeatWave can easily be used for development tasks with existing Oracle services, such as Oracle Analytics Cloud. New applications can also be created with the LAMP or other software stacks.
+MySQL Enterprise Edition integrates seamlessly with the LAMP (Linux, Apache, MySQL, PHP) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LAMP stack by:
 
-**Note:** This application code is intended for educational purposes only. It is designed to help developers learn and practice application development skills with MySQL HeatWave on OCI. The code is not designed to be used in a production environment
+- Running JavaScript functions in database
+- Using secure PHP connections (PDO)
+- Maintaining Apache/Linux compatibility
 
-_Estimated Lab Time:_ 20 minutes
+**Note:** The application code in this lab is intended for educational purposes only. It is designed to help developers learn and practice application development skills with MySQL Enterprise Edition. The code is not designed to be used in a production environment
+
+_Estimated Lab Time:_ 15 minutes
 
 ### Objectives
 
@@ -14,13 +18,13 @@ In this lab, you will be guided through the following tasks:
 
 - Install Apache and PHP
 - Create PHP / MYSQL Connect Application
-- Create LAMP WEB Application
+- Deploy  LAMP WEB Application
 
 ### Prerequisites
 
 - An Oracle Trial or Paid Cloud Account
 - Some Experience with MySQL SQL and  PHP
-- Completed Lab 5
+- Completed Lab 3
 
 ## Task 1: Install App Server (APACHE)
 
@@ -199,14 +203,20 @@ In this lab, you will be guided through the following tasks:
     </copy>
     ```
 
-6. From your local  machine connect to dbhwtest.php
+6. From your local  machine connect to dbtest.php
 
     Example: http://129.213.167..../dbtest.php  
 
-    ![Application output](./images/order-app-output.png " order app output")
+
 
 
 ## Task 5: Deploy Sakila Film Web Application
+
+The "Sakila Film Time Converter" is a web app that shows films from the Sakila database and converts time formats. Uses a MySQL JavaScript function to convert seconds into either "00:00:00" format or "X hours Y minutes Z seconds".
+    **Features**
+    - Film library display
+    - Time format converter
+    - Film length shown in both minutes and HH:MM:SS
 
 1. Go to the development folder
 
@@ -237,7 +247,7 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo nano config.php</copy>
     ```
 
- 5. Run the application as follows:
+5. Run the application as follows:
 
     http://computeIP/sakila-web/
 
