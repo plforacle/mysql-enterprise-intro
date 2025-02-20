@@ -46,7 +46,7 @@ This lab assumes you have:
     ```
 4. Change to the sakila directory
     ```
-    <copy>cd sakila</copy>
+    <copy>cd sakila-db</copy>
     ```
 5. Connect to the MySQL server. Enter your password when prompted
     ```
@@ -62,7 +62,7 @@ This lab assumes you have:
     ```
 8 Verify the installation
     ```
-    <copy>show databses;</copy>
+    <copy>show databases;</copy>
     ```
 
 ## Task 2: Explore the Sakila Database in MySQL
@@ -70,11 +70,11 @@ This lab assumes you have:
 1. Point to the sakila dabase
 
     ```
-    <copy>use sakila</copy>
+    <copy>use sakila;</copy>
     ```
 2. List the sakila tables
     ```
-    <copy>show tables</copy>
+    <copy>show tables;</copy>
     ```
 3. Here is the ERD (Entity Relationship Diagram) of the Sakila Database.
 

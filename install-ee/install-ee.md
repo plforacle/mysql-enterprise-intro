@@ -50,10 +50,10 @@ This lab assumes you have:
     <copy>wget 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/_85tMv-_I0WRJRAuHI9StGHfo3WXtAsSbpslsOIqIu2hsHgmKc8n7zmhk-5KvVw8/n/idazzjlcjqzj/b/mysql-ee-downloads/o/Oracle%20Technical%20Resource(OTR)/mysql-enterprise-9.2.0_el8_x86_64_bundle.tar'</copy>
     ```
 
-5. Extract the contents of the "mysql-enterprise-9.2.0el8x8664bundle.tar" archive file
+5. Extract the contents of the "mysql-enterprise-9.2.0_el8_x86_64_bundle.tar" archive file
 
     ```bash
-    <copy>tar xvf mysql-enterprise-9.2.0el8x8664bundle</copy>
+    <copy>tar xvf mysql-enterprise-9.2.0_el8_x86_64_bundle.tar</copy>
     ```
 
 ## Task 2: Install MySQL Enterprise Edition
@@ -79,19 +79,19 @@ This lab assumes you have:
 4. Disable the "mysql" module using the Yum package manager
 
     ```bash
-    <copy>sudo yum module disable mysql</copy>
+    <copy>sudo yum module disable mysql -y </copy>
     ```
 
 5. Install the "mysql-commercial-server" package
 
     ```bash
-    <copy>sudo yum install mysql-commercial-server</copy>
+    <copy>sudo yum install mysql-commercial-server -y </copy>
     ```
 
 6. Install the "mysql-shell-commercial" package
 
     ```bash
-    <copy>sudo yum install mysql-shell-commercial</copy>
+    <copy>sudo yum install mysql-shell-commercial -y </copy>
     ```
 
 ## Task 3: Configure and Start MySQL Enterprise Edition
