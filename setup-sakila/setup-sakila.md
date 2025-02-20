@@ -239,11 +239,11 @@ You may now **proceed to the next lab**.
 
 - [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/sakila-introduction.html)
 - [JavaScript in MySQL](https://blogs.oracle.com/mysql/post/more-javascript-in-mysql)
-- [Introducing JavaScript support in MySQL](https://blogs.oracle.com/mysql/post/introducing-javascript-support-in-mysql)
+- [MySQL Enterprise Stored Programs](https://www.mysql.com/products/enterprise/storedprograms.html)
 
 
 ## Acknowledgements
 
 - **Author** - Perside Foster, MySQL Solution Engineering
 - **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March  2025
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March 2025
