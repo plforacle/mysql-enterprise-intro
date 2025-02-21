@@ -142,21 +142,22 @@ In this lab, you will be guided through the following tasks:
 
 3. Add the following code to the editor and save the file (ctr + o) (ctl + x)
 
-     ```bash
-        <copy><?php
+    ```bash
+    <copy>
+    <?php
     // Database credentials
-    define('DB_SERVER', '10.0.1...');// MDS server IP address
+    define('DB_SERVER', '10.0..');// HeatWave instance IP address
     define('DB_USERNAME', 'admin');
-    define('DB_PASSWORD', 'Welcome#12345');
-    define('DB_NAME', 'mysql_customer_orders');
-    //Attempt to connect to MySQL database
+    define('DB_PASSWORD', 'Pass...');
+    define('DB_NAME', 'mysql');
+    //Attempt to connect to HeatWave instance
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
     // Check connection
     if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
+        die("ERROR: Could not connect to the HeatWave instance. " . mysqli_connect_error());
     }
     // Print host information
-    echo 'Successfull Connect.';
+    echo 'Successfully connected to the HeatWave instance.';
     echo 'Host info: ' . mysqli_get_host_info($link);
     ?>
     </copy>
@@ -180,20 +181,18 @@ In this lab, you will be guided through the following tasks:
     <copy>
     <?php
     require_once "config.php";
-    $query = "select id, vendor_name from DELIVERY_VENDOR limit 5;";
+    $query = "SELECT user FROM mysql.user;";
     if ($stmt = $link->prepare($query)) {
     $stmt->execute();
-    $stmt->bind_result($id,$vendor_name);
+    $stmt->bind_result($user);
     echo "<table>";
         echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>VendorName</th>";
+        echo "<th>User</th>";
     echo "</tr>";
 
     while ($stmt->fetch()) {
         echo "<tr>";
-        echo "<td>" . $id ."</td>";
-        echo "<td>" . $vendor_name. "</td>";
+        echo "<td>" . $user ."</td>";
         echo "</tr>";
     }
 
@@ -202,7 +201,7 @@ In this lab, you will be guided through the following tasks:
     ?>
     </copy>
     ```
-
+    
 6. From your local  machine connect to dbtest.php
 
     Example: http://129.213.167..../dbtest.php  
@@ -228,28 +227,22 @@ The "Sakila Film Time Converter" is a web app that shows films from the Sakila d
 2. Download application code
 
     ```bash
-    <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/4joJKyI1NFAXNImd1V-zAV0kOb7pIauzy8QKjMK4BbpBTcYVfkxoAH7HB3P0brMK/n/idazzjlcjqzj/b/mysql_security/o/emp_apps.zip</copy>
+    <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ebnl0Yd1YwZkXBiQYZQu6nljiMWSTb9TdhZd4fF9SNGILS_QkYgr_q8E-VBd3x1Z/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web.zip</copy>
     ```
 
 3. unzip Application code
 
     ```bash
-    <copy>sudo unzip emp_apps.zip</copy>
+    <copy>sudo unzip sakila-web.zip</copy>
     ```
 
     ```bash
-    <copy>cd emp_apps</copy>
+    <copy>cd sakila-web</copy>
     ```
 
-4. Replace the DB_USERNAME to **admin** in config.php file and save the file.
+4. Run the application as follows:
 
-    ```bash
-    <copy>sudo nano config.php</copy>
-    ```
-
-5. Run the application as follows:
-
-    http://computeIP/sakila-web/
+    http://127.0.0.../sakila-web/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
