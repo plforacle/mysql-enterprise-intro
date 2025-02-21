@@ -14,7 +14,9 @@ In this workshop, you'll work through a series of guided tasks and exercises tha
 
 By the end of this workshop, you'll have a solid foundation in MySQL Enterprise Edition and be able to start building your own databases and applications. Our goal is to provide you with a comprehensive and practical introduction to MySQL Enterprise Edition.
 
-_Estimated Workshop Time: 90 minutes
+_Estimated Workshop Time:_ 90 minutes
+
+**Watch this MySQL Enterprise Edition Quick Introduction  Video**
 
 [](youtube:RJ9p5tUzlmY)
 
