@@ -209,7 +209,7 @@ In this lab, you will be guided through the following tasks:
 
 
 
-## Task 5: Deploy Sakila Film Web Application
+## Task 4: Deploy Sakila Film Web / MySQL JavaScript Function Application
 
 The "Sakila Film Time Converter" is a web app that shows films from the Sakila database and converts time formats. Uses a MySQL JavaScript function to convert seconds into either "00:00:00" format or "X hours Y minutes Z seconds".
     **Features**
