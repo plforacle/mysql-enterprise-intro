@@ -217,20 +217,34 @@ The "Sakila Film Time Converter" is a web app that shows films from the Sakila d
     - Time format converter
     - Film length shown in both minutes and HH:MM:SS
 
-1. Go to the development folder
+1. Fix the SELinux context
+
+    ```bash
+    <copy>sudo semanage fcontext -a -t mysql_lib_t "/usr/lib64/mysql/plugin/component_mle.so"
+sudo semanage fcontext -a -t mysql_lib_t "/usr/lib64/mysql/plugin/../private/libpolyglot.so"
+sudo restorecon -v /usr/lib64/mysql/plugin/component_mle.so
+sudo restorecon -v /usr/lib64/mysql/plugin/../private/libpolyglot.so </copy>
+    ```
+2. Restart MySQL:
+
+    ```bash
+    <copy>sudo systemctl restart mysqld </copy>
+    ```
+
+3. Go to the development folder
 
 
     ```bash
     <copy>cd /var/www/html</copy>
     ```
 
-2. Download application code
+4. Download application code
 
     ```bash
     <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ebnl0Yd1YwZkXBiQYZQu6nljiMWSTb9TdhZd4fF9SNGILS_QkYgr_q8E-VBd3x1Z/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web.zip</copy>
     ```
 
-3. unzip Application code
+5. unzip Application code
 
     ```bash
     <copy>sudo unzip sakila-web.zip</copy>
@@ -240,28 +254,11 @@ The "Sakila Film Time Converter" is a web app that shows films from the Sakila d
     <copy>cd sakila-web</copy>
     ```
 
-4. ** DANGER ...BIG PROBLEM Need a FIX ***
-    - disable SELinux temporarily
-        ```bash
-        <copy>sudo setenforce 0</copy>
-        ```
-        
-        ```bash
-        <copy>sudo systemctl restart mysqld</copy>
-        ```
-
-
-5. Run the application as follows:
+6. Run the application as follows (Use your coupute IP address):
 
     http://127.0.0.../sakila-web/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
-
-
-6. Enable SELinux  
-        ```bash
-        <copy>sudo setenforce 1</copy>
-        ```
 
 ## Learn More
 
