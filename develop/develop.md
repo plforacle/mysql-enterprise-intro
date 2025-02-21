@@ -240,12 +240,28 @@ The "Sakila Film Time Converter" is a web app that shows films from the Sakila d
     <copy>cd sakila-web</copy>
     ```
 
-4. Run the application as follows:
+4. ** DANGER ...BIG PROBLEM Need a FIX ***
+    - disable SELinux temporarily
+        ```bash
+        <copy>sudo setenforce 0</copy>
+        ```
+        
+        ```bash
+        <copy>sudo systemctl restart mysqld</copy>
+        ```
+
+
+5. Run the application as follows:
 
     http://127.0.0.../sakila-web/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
+
+6. Enable SELinux  
+        ```bash
+        <copy>sudo setenforce 1</copy>
+        ```
 
 ## Learn More
 
