@@ -1,4 +1,4 @@
-# Setup Sakila Sample Database and JavaScript Function
+# Setup Sakila Sample Database and JavaScript Stored Function
 
 ## Introduction
 
@@ -23,7 +23,7 @@ This lab assumes you have:
 
 - Completed Labs 2
 
-## Task 1: Install Sakila
+## Task 1: Install Sakila Database
 
 1. Connect to **myserver** instance using Cloud Shell (**Example:** ssh -i  ~/.ssh/id_rsa opc@132.145.17….)
 
@@ -144,18 +144,9 @@ This lab assumes you have:
     <copy>\q</copy>
     ```
 
-## Task 3: Create and test a MySQL JavaScript Stored Function
+## Task 3: Setup MySQL EE  for JavaScript Stored Function
 
-MySQL now supports writing stored functions and stored procedures using JavaScript. Please note that this functionality is only available in MySQL Enterprise Edition.  Let's create a stored function with a complex business logic
-
-- The Business Rules
-
-Let’s assume we have a requirement to return a given number of seconds in a format that includes the number of hours, minutes, and seconds represented by this number. We also need to have two different formats. The first format is a short format that would return the data using the following format: hh:mm:ss. The second, long, format would return the data using h hours m minutes s seconds. Additional requirements for the long format include:
-
-If the number of hours, minutes, or seconds is 0, do not include it in the output.
-If the number of hours, minutes, or seconds is 1, use the singular version of the word; otherwise, use the plural.
-
-Creating a MySQL stored function to handle this would be possible, but it might be longer and more involved. Using Javascript is fairly straightforward.
+MySQL now supports writing stored functions and stored procedures using JavaScript. Please note that this functionality is only available in MySQL Enterprise Edition.  
 
 1. Setup  MLE Component when using JavaScript. As part of enabling Javascript SP: INSTALL COMPONENT 'file://component_mle';
 This  is a prerequisite step in the OS shell that runs before installing the MLE component. 
@@ -188,13 +179,36 @@ This  is a prerequisite step in the OS shell that runs before installing the MLE
     <copy>sudo setenforce 1</copy>
     ```
 
-6. Log  back into MySQL
+6. SELinux is now  blocking MySQL from using the JavaScript files. Fix this by adding and applying the following  security labels to let SELinux know "these files belong to MySQL."
+
+    ```bash
+    <copy>sudo semanage fcontext -a -t mysql_lib_t "/usr/lib64/mysql/plugin/component_mle.so"
+sudo semanage fcontext -a -t mysql_lib_t "/usr/lib64/mysql/plugin/../private/libpolyglot.so"
+sudo restorecon -v /usr/lib64/mysql/plugin/component_mle.so
+sudo restorecon -v /usr/lib64/mysql/plugin/../private/libpolyglot.so </copy>
+    ```
+7. Restart MySQL:
+
+    ```bash
+    <copy>sudo systemctl restart mysqld </copy>
+
+## Task 4: Create and test a MySQL JavaScript Stored Function
+
+Let's create a stored function with a complex business logic with the followig Business Rules:
+
+Let’s assume we have a requirement to return a given number of seconds in a format that includes the number of hours, minutes, and seconds represented by this number. We also need to have two different formats. The first format is a short format that would return the data using the following format: hh:mm:ss. The second, long, format would return the data using h hours m minutes s seconds. Additional requirements for the long format include:
+
+If the number of hours, minutes, or seconds is 0, do not include it in the output.
+If the number of hours, minutes, or seconds is 1, use the singular version of the word; otherwise, use the plural.
+
+Creating a MySQL stored function to handle this would be possible, but it might be longer and more involved. Using Javascript is fairly straightforward.
+1. Log  back into MySQL
 
     ```bash
     <copy>mysqlsh -uadmin -hlocalhost -p </copy>
     ```
 
-7. Create the **secondsToHoursMinsSecs** function
+2. Create the **secondsToHoursMinsSecs** function
 
     ```bash
     <copy>create function secondsToHoursMinsSecs(seconds double, format varchar(5))
@@ -217,17 +231,17 @@ This  is a prerequisite step in the OS shell that runs before installing the MLE
     }
 $$; </copy>
     ```
-8. Test the **secondsToHoursMinsSecs** function in short mode
+3. Test the **secondsToHoursMinsSecs** function in short mode
 
     ```bash
     <copy>select secondsToHoursMinsSecs(1234, 'short') as result;</copy>
     ```
-9. Test the **secondsToHoursMinsSecs** function in long mode
+4. Test the **secondsToHoursMinsSecs** function in long mode
 
     ```bash
     <copy>select secondsToHoursMinsSecs(1234, 'long') as result; </copy>
     ```
-10. Exit 
+5. Exit 
 
     ```bash
     <copy>\q</copy>
@@ -240,10 +254,12 @@ You may now **proceed to the next lab**.
 - [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/sakila-introduction.html)
 - [JavaScript in MySQL](https://blogs.oracle.com/mysql/post/more-javascript-in-mysql)
 - [MySQL Enterprise Stored Programs](https://www.mysql.com/products/enterprise/storedprograms.html)
+- [MySQL SELinux File Context](https://dev.mysql.com/doc/refman/8.4/en/selinux-file-context.html)
 
 
 ## Acknowledgements
 
 - **Author** - Perside Foster, MySQL Solution Engineering
-- **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director
+- **Contributors** - Scott Stroz, MySQL Developer Advocate 
+Nick Mader, MySQL Global Channel Enablement & Strategy Director
 - **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March 2025
