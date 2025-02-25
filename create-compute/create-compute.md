@@ -37,13 +37,13 @@ In this lab, you will be guided through the following tasks:
     **Name**:
 
     ```bash
-    <copy>heatwave-genai</copy>
+    <copy>mysql</copy>
     ```
 
     **Description**:
 
     ```bash
-    <copy>Compartment for HeatWave GenAI</copy>
+    <copy>Compartment for mysql</copy>
     ```
 
 4. Click **Create Compartment**.
@@ -56,7 +56,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Select VCN](./images/3-select-vcn.png "Select VCN")
 
-2. Under **Compartment**, select **heatwave-genai**, and Click **Start VCN Wizard**.
+2. Under **Compartment**, select **mysql**, and Click **Start VCN Wizard**.
 
     ![Start VCN Wizard](./images/4-start-vcn-wizard.png "Start VCN Wizard ")
 
@@ -67,10 +67,10 @@ In this lab, you will be guided through the following tasks:
 4. Under **Basic information**, provide a **VCN name**:
 
     ```bash
-    <copy>heatwave-genai-vcn</copy>
+    <copy>mysql-vcn</copy>
     ```
 
-5. Ensure that **heatwave-genai** compartment is selected, and click **Next**.
+5. Ensure that **mysql** compartment is selected, and click **Next**.
 
     ![VCN configuration](./images/6-create-vcn-internet-connectivity.png "VCN configuration")
 
@@ -84,15 +84,15 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 3: Configure security list to allow incoming connections
 
-1. On the **heatwave-genai-vcn** page, under **Subnets**, click  **private subnet-heatwave-genai-vcn**.
+1. On the **mysql-vcn** page, under **Subnets**, click  **private subnet-mysql-vcn**.
 
-     ![Show subnet details](./images/9-heatwave-genai-vcn-subnets.png "Show subnet details")
+     ![Show subnet details](./images/9-mysql-vcn-subnets.png "Show subnet details")
 
-2. On **private subnet-heatwave-genai-vcn** page, under **Security Lists**, click  **security List for private subnet-heatwave-vcn**.
+2. On **private subnet-mysql-vcn** page, under **Security Lists**, click  **security List for private subnet-mysql-vcn**.
 
     ![Select security lists](./images/10-select-security-list.png "Select security lists")
 
-3. On the **security list for private subnet-heatwave-genai-vcn** page, under **Ingress Rules**, click **Add Ingress Rules**.
+3. On the **security list for private subnet-mysql-vcn** page, under **Ingress Rules**, click **Add Ingress Rules**.
 
     ![Add ingress rules](./images/11-add-ingress-rules.png "Add ingress rules")
 
@@ -112,7 +112,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Ingress rules](./images/12-enter-ingress-rules.png "Ingress rules")
 
-5. On **security list for private subnet-heatwave-genai-vcn** page, the new ingress rules are shown under **Ingress Rules**.
+5. On **security list for private subnet-mysql-vcn** page, the new ingress rules are shown under **Ingress Rules**.
 
     ![New ingress rules](./images/13-new-ingress-rules.png "New ingress rules")
 
@@ -122,19 +122,19 @@ In this lab, you will be guided through the following tasks:
 
     ![Select VCN](./images/3-select-vcn.png "Select VCN")
 
-2. Under **Compartment**, ensure **heatwave-genai** is selected, and click the VCN you created, **heatwave-genai-vcn**.
+2. Under **Compartment**, ensure **mysql** is selected, and click the VCN you created, **mysql-vcn**.
 
     ![Select VCN](./images/14-select-vcn.png "Select VCN")
 
-3. On the **heatwave-genai-vcn** page, under **Subnets**, click  **public subnet-heatwave-genai-vcn**.
+3. On the **mysql-vcn** page, under **Subnets**, click  **public subnet-mysql-vcn**.
 
     ![Select public subnet](./images/15-public-subnet.png "Select public subnet")
 
-4. Click **Default Security List for heatwave-genai-vcn**.
+4. Click **Default Security List for mysql-vcn**.
 
     ![Default security list](./images/16-default-security-list.png "Default security list")
 
-5. On **Default Security List for heatwave-genai-vcn** page, under **Ingress Rules**, click **Add Ingress Rules**.
+5. On **Default Security List for mysql-vcn** page, under **Ingress Rules**, click **Add Ingress Rules**.
 
     ![Add ingress rules in default security list](./images/17-add-ingress-rules-default-security-list.png "Add ingress rules in default security list")
 
@@ -154,30 +154,30 @@ In this lab, you will be guided through the following tasks:
 
     ![Ingress rules](./images/18-enter-ingess-rules-default-security-list.png "Ingress rules") 
 
-7. On **Default Security List for heatwave-genai-vcn** page, the new ingress rules are shown under **Ingress Rules**.
+7. On **Default Security List for mysql-vcn** page, the new ingress rules are shown under **Ingress Rules**.
 
     ![New ingress rules](./images/19-new-ingress-rules-default-security-list.png "New ingress rules")
 
 
 ## Task 5: Create Compute Instance
 
-You need a compute instance to connect to the Heatwave instance.
+You need a compute instance to connect to perform the database and application tasks
 
 1. Click the **Navigation menu** in the upper left, navigate to **Compute**, and under **Compute**, select **Instances**.
   
     ![Click compute](./images/click-compute.png "Click compute")
 
-2. Ensure **heatwave-genai** compartment is selected, and click click  **Create instance**.
+2. Ensure **mysql** compartment is selected, and click click  **Create instance**.
 
      ![Create instance](./images/create-instance.png "Create instance")
 
 3. On **Create compute instance** page, enter the name of the compute instance.
 
     ```bash
-    <copy>heatwave-genai-compute</copy>
+    <copy>mysql-compute</copy>
     ```
 
-4. Ensure **heatwave-genai** compartment is selected.
+4. Ensure **mysql** compartment is selected.
 
     ![Compute instance name](./images/compute-name.png "Compute instance name")
 
@@ -189,9 +189,9 @@ You need a compute instance to connect to the Heatwave instance.
 
 7. In **Primary VNIC information** field, ensure the following settings are selected:
 
-    - **Primary Network**: **heatwave-genai-vcn**
+    - **Primary Network**: **mysql-vcn**
 
-    - **Subnet**: **public-subnet-heatwave-genai-vcn**
+    - **Subnet**: **public-subnet-mysql-vcn**
 
 8. In **Primary VNIC IP addresses** field, ensure the following settings are selected:
 

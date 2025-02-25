@@ -25,7 +25,7 @@ This lab assumes you have:
 
 ## Task 1: Install Sakila Database
 
-1. Connect to **myserver** instance using Cloud Shell (**Example:** ssh -i  ~/.ssh/id_rsa opc@132.145.17….)
+1. Connect to **mysql-compute** instance using Cloud Shell (**Example:** ssh -i  ~/.ssh/id_rsa opc@132.145.17….)
 
     ```bash
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
@@ -163,6 +163,7 @@ This  is a prerequisite step in the OS shell that runs before installing the MLE
     <copy>mysqlsh -uadmin -hlocalhost -p </copy>
     ```
 
+
 4. Install the component file
 
     ```bash
@@ -191,6 +192,7 @@ sudo restorecon -v /usr/lib64/mysql/plugin/../private/libpolyglot.so </copy>
 
     ```bash
     <copy>sudo systemctl restart mysqld </copy>
+    ```
 
 ## Task 4: Create and test a MySQL JavaScript Stored Function
 
@@ -202,13 +204,20 @@ If the number of hours, minutes, or seconds is 0, do not include it in the outpu
 If the number of hours, minutes, or seconds is 1, use the singular version of the word; otherwise, use the plural.
 
 Creating a MySQL stored function to handle this would be possible, but it might be longer and more involved. Using Javascript is fairly straightforward.
+
 1. Log  back into MySQL
 
     ```bash
     <copy>mysqlsh -uadmin -hlocalhost -p </copy>
     ```
 
-2. Create the **secondsToHoursMinsSecs** function
+2. Point to the sakila dabase
+
+    ```bash
+    <copy>use sakila;</copy>
+    ```
+
+3. Create the **secondsToHoursMinsSecs** JavaScript Stored Function
 
     ```bash
     <copy>create function secondsToHoursMinsSecs(seconds double, format varchar(5))
@@ -231,17 +240,17 @@ Creating a MySQL stored function to handle this would be possible, but it might 
     }
 $$; </copy>
     ```
-3. Test the **secondsToHoursMinsSecs** function in short mode
+4. Test the **secondsToHoursMinsSecs** function in short mode
 
     ```bash
     <copy>select secondsToHoursMinsSecs(1234, 'short') as result;</copy>
     ```
-4. Test the **secondsToHoursMinsSecs** function in long mode
+5. Test the **secondsToHoursMinsSecs** function in long mode
 
     ```bash
     <copy>select secondsToHoursMinsSecs(1234, 'long') as result; </copy>
     ```
-5. Exit 
+6. Exit 
 
     ```bash
     <copy>\q</copy>

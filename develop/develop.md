@@ -122,7 +122,7 @@ In this lab, you will be guided through the following tasks:
 
    Example: http://129.213.167.../info.php
 
-## Task 3: Create MySQL HeatWave / PHP connect app
+## Task 3: Create MySQL / PHP connect app
 
 1. Security update"   set SELinux to allow Apache to connect to MySQL
 
@@ -140,24 +140,24 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo nano config.php</copy>
     ```
 
-3. Add the following code to the editor and save the file (ctr + o) (ctl + x)
+3. Add the following code to the editor, change DB_PASSWORD, and save the file (ctr + o) (ctl + x)
 
     ```bash
     <copy>
     <?php
     // Database credentials
-    define('DB_SERVER', '10.0..');// HeatWave instance IP address
+    define('DB_SERVER', 'localhost');//
     define('DB_USERNAME', 'admin');
-    define('DB_PASSWORD', 'Pass...');
+    define('DB_PASSWORD', 'Welco...');
     define('DB_NAME', 'mysql');
-    //Attempt to connect to HeatWave instance
+    //Attempt to connect to database
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
     // Check connection
     if($link === false){
-        die("ERROR: Could not connect to the HeatWave instance. " . mysqli_connect_error());
+        die("ERROR: Could not connect to the MySQL instance. " . mysqli_connect_error());
     }
     // Print host information
-    echo 'Successfully connected to the HeatWave instance.';
+    echo 'Successfully connected to the MySQL instance.';
     echo 'Host info: ' . mysqli_get_host_info($link);
     ?>
     </copy>
