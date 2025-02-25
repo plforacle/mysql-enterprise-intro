@@ -180,15 +180,21 @@ This  is a prerequisite step in the OS shell that runs before installing the MLE
     <copy>sudo setenforce 1</copy>
     ```
 
-6. SELinux is now  blocking MySQL from using the JavaScript files. Fix this by adding and applying the following  security labels to let SELinux know "these files belong to MySQL."
+6. SELinux is now  blocking MySQL from using the JavaScript files. Fix this by executing the following commands to grant the specific permissions needed for the JavaScript functionality.
 
-    ```bash
-    <copy>sudo semanage fcontext -a -t mysql_lib_t "/usr/lib64/mysql/plugin/component_mle.so"
-sudo semanage fcontext -a -t mysql_lib_t "/usr/lib64/mysql/plugin/../private/libpolyglot.so"
-sudo restorecon -v /usr/lib64/mysql/plugin/component_mle.so
-sudo restorecon -v /usr/lib64/mysql/plugin/../private/libpolyglot.so </copy>
-    ```
-7. Restart MySQL:
+    - Generate the policy module from audit logs
+
+        ```bash
+        sudo grep -i libpolyglot /var/log/audit/audit.log | sudo audit2allow -M mysql_js
+        ```
+
+    - Install the policy module
+
+        ```bash
+        sudo semodule -i mysql_js.pp
+        ```
+
+7. Restart MySQL to apply the changes:
 
     ```bash
     <copy>sudo systemctl restart mysqld </copy>

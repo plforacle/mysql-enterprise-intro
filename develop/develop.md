@@ -201,7 +201,7 @@ In this lab, you will be guided through the following tasks:
     ?>
     </copy>
     ```
-    
+
 6. From your local  machine connect to dbtest.php
 
     Example: http://129.213.167..../dbtest.php  
