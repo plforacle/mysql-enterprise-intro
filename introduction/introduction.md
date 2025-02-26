@@ -35,6 +35,10 @@ MySQL Enterprise Edition is a comprehensive database solution that offers advanc
 
 MySQL Enterprise Edition is widely used in various industries, including web and mobile applications, e-commerce, financial services, healthcare, and government. Its popularity stems from its ability to provide high-performance, secure, and scalable database solutions that meet the needs of developers and organizations.
 
+To access the full range of MySQL Enterprise Edition features for free while learning, developing, and prototyping, you can download the MySQL Enterprise Edition software directly from Oracle's Technology Network (OTN) website at: https://www.oracle.com/mysql/technologies/mysql-enterprise-edition-downloads.html. This allows you to utilize all the advanced features without needing a commercial license during the development and testing phase. 
+
+If you want to use MySQL Enterprise Edition in a production environment, you will need to purchase a commercial license. To Buy MySQL Products and Services go to: https://www.mysql.com/buy-mysql/ 
+
 ## Objectives
 
 In this lab, you will be guided through the following steps:
