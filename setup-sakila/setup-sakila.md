@@ -2,8 +2,11 @@
 
 ## Introduction
 
-The Sakila sample database was initially developed by Mike Hillyer, a former member of the MySQL AB documentation team. It is intended to provide a standard schema that can be used for examples in books, tutorials, articles, samples, and so forth. The Sakila sample database also serves to highlight features of MySQL such as Views, Stored Procedures, and Triggers. 
-More details on the Sakila sample database and its usage can be found in the  [Sakila Sample Database page](https://dev.mysql.com/doc/sakila/en/sakila-introduction.html)
+The Sakila sample database was initially developed by Mike Hillyer, a former member of the MySQL AB documentation team. It is intended to provide a standard schema that can be used for examples in books, tutorials, articles, samples, and so forth. The Sakila sample database also serves to highlight features of MySQL such as Views, Stored Procedures, and Triggers.
+
+
+JavaScript is the most popular programming language among developers.  Besides the simpler syntax and the support for modern language features, a key factor in its popularity is the rich ecosystem which provides a multitude of reusable code modules.
+By supporting JavaScript in stored programs, developers will be able to write MySQL stored programs in a familiar language and take advantage of the extensive JavaScript ecosystem! 
 
 _Estimated Time:_ 20 minutes
 
@@ -13,6 +16,7 @@ In this lab, you will be guided through the following tasks:
 
 - Install  Sakila
 - Explore the Sakila Database in MySQL
+- Configure the system to access the JavaScript libraries
 - Create and test a JavaScript Stored Function
 
 
@@ -33,49 +37,49 @@ This lab assumes you have:
 
     ![CONNECT](./images/ssh-login-2.png " ")
 
-1. Change to home directory
+2. Change to home directory
 
     ```bash
     <copy>cd /home/opc</copy>
     ```
 
-2. Download the Sakila Database
+3. Download the Sakila Database
 
     ```bash    
     <copy>wget https://downloads.mysql.com/docs/sakila-db.tar.gz</copy>
     ```
 
-3. Extract the contents of the "sakila-db.tar.gz" archive file. you should see two .sql files: sakila-data.sql and sakila-schema.sql
+4. Extract the contents of the "sakila-db.tar.gz" archive file. you should see two .sql files: sakila-data.sql and sakila-schema.sql
 
     ```bash
     <copy>tar -xvf sakila-db.tar.gz</copy>
     ```
 
-4. Change to the sakila directory
+5. Change to the sakila directory
 
     ```bash
     <copy>cd sakila-db</copy>
     ```
 
-5. Connect to the MySQL server. Enter your password when prompted
+6. Connect to the MySQL server. Enter your password when prompted
 
     ```bash
     <copy>mysqlsh -uadmin -hlocalhost -p</copy>
     ```
 
-6. Execute the sakila-schema.sql script to create the database structure
+7. Execute the sakila-schema.sql script to create the database structure
 
     ```bash
     <copy>SOURCE sakila-schema.sql;</copy>
     ```
 
-7. Execute the sakila-data.sql script to populate the database structure
+8. Execute the sakila-data.sql script to populate the database structure
 
     ```bash
     <copy>SOURCE sakila-data.sql;</copy>
     ```
 
-8. Verify the installation
+9. Verify the installation
 
     ```bash
     <copy>show databases;</copy>
@@ -162,7 +166,6 @@ This  is a prerequisite step in the OS shell that runs before installing the MLE
     ```bash
     <copy>mysqlsh -uadmin -hlocalhost -p </copy>
     ```
-
 
 4. Install the component file
 
@@ -275,6 +278,7 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Perside Foster, MySQL Solution Engineering
-- **Contributors** - Scott Stroz, MySQL Developer Advocate 
+- **Contributors** - Scott Stroz, MySQL Developer Advocate, 
+John Kehoe, Principal Solution Engineer MySQL GBU,  
 Nick Mader, MySQL Global Channel Enablement & Strategy Director
 - **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March 2025

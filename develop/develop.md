@@ -8,6 +8,8 @@ MySQL Enterprise Edition integrates seamlessly with the LAMP (Linux, Apache, MyS
 - Using secure PHP connections (PDO)
 - Maintaining Apache/Linux compatibility
 
+After installing the LAMP Stack , you will Deploy and test the "Sakila Film Library with Time Converter" web application. This application displays the Sakila.Film data while providing a time conversion tool. Users can enter seconds and convert them to either HH:MM:SS format or written time descriptions using MySQL Enterprise Edition's JavaScript function. This LAMP-based application demonstrates practical use of database features within MySQL Enterprise Edition.
+
 **Note:** The application code in this lab is intended for educational purposes only. It is designed to help developers learn and practice application development skills with MySQL Enterprise Edition. The code is not designed to be used in a production environment
 
 _Estimated Lab Time:_ 15 minutes
@@ -17,8 +19,8 @@ _Estimated Lab Time:_ 15 minutes
 In this lab, you will be guided through the following tasks:
 
 - Install Apache and PHP
-- Create PHP / MYSQL Connect Application
-- Deploy  LAMP WEB Application
+- Learn to create PHP / MYSQL Connect Application
+- Deploy the Sample LAMP WEB Application
 
 ### Prerequisites
 
@@ -28,7 +30,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 1: Install App Server (APACHE)
 
-1. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"
+1. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance IP"
 
      ```bash
     <copy>ssh -i private_key_file opc@new_compute_instance_ip</copy>
@@ -124,7 +126,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 3: Create MySQL / PHP connect app
 
-1. Security update"   set SELinux to allow Apache to connect to MySQL
+1. Security update" set SELinux to allow Apache to connect to MySQL
 
     ```bash
     <copy> sudo setsebool -P httpd_can_network_connect 1 </copy>
@@ -206,13 +208,7 @@ In this lab, you will be guided through the following tasks:
 
     Example: http://129.213.167..../dbtest.php  
 
-## Task 4: Deploy Sakila Film Web / MySQL JavaScript Function Application
-
-The "Sakila Film Time Converter" is a web app that shows films from the Sakila database and converts time formats. Uses a MySQL JavaScript function to convert seconds into either "00:00:00" format or "X hours Y minutes Z seconds".
-    **Features**
-    - Film library display
-    - Time format converter
-    - Film length shown in both minutes and HH:MM:SS
+## Task 4: Deploy Sakila Film Web / MySQL JavaScript Stored Function Application
 
 1. Go to the development folder
 
@@ -241,6 +237,29 @@ The "Sakila Film Time Converter" is a web app that shows films from the Sakila d
     http://127.0.0.../sakila-web/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
+
+5. Test the application with following examples(Enter seconds, then select **short** or **long** format):
+
+    a. Test Case 1 - Movie Length:
+    - Input: 7200 seconds (typical movie)
+    - Short format: 02:00:00
+    - Long format: 2 hours
+
+    b. Test Case 2 - TV Episode:
+    - Input: 1350 seconds (22.5 minute show)
+    - Short format: 00:22:30
+    - Long format: 22 minutes 30 seconds
+
+    c. Test Case 3 - Long Film:
+    - Input: 18105 seconds (Lord of the Rings style)
+    - Short format: 05:01:45
+    - Long format: 5 hours 1 minute 45 seconds
+
+    d. Test Case 4 - Short Clip:
+    - Input: 90 seconds (quick scene)
+    - Short format: 00:01:30
+    - Long format: 1 minute 30 seconds
+
 
 ## Learn More
 
