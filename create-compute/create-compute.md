@@ -226,5 +226,6 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Perside Foster, MySQL Solution Engineering
-- **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director
+- **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director,
+Selena Sanchez, MySQL Staff Solutions Engineer 
 - **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March  2025
