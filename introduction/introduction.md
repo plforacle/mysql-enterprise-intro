@@ -45,7 +45,7 @@ In this lab, you will be guided through the following steps:
 
 1. Install MySQL Enterprise Edition (Developer Download from Oracle Technology Network (OTN))  
 2. Install Sample Database Sakila
-3. Create JavaScript stored program  / Function
+3. Create and configure JavaScript stored program  / Function
 4. Install and test Linux, Apache, PHP,and  MySQL(LAMP) Development Stack
 5. Deploy Sample application using Sakilaa data and MySQL JavaScript Function
 
