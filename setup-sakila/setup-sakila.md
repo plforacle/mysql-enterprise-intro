@@ -188,13 +188,13 @@ This  is a prerequisite step in the OS shell that runs before installing the MLE
     - Generate the policy module from audit logs
 
         ```bash
-        sudo grep -i libpolyglot /var/log/audit/audit.log | sudo audit2allow -M mysql_js
+        <copy>sudo grep -i libpolyglot /var/log/audit/audit.log | sudo audit2allow -M mysql_js</copy>
         ```
 
     - Install the policy module
 
         ```bash
-        sudo semodule -i mysql_js.pp
+        <copy>sudo semodule -i mysql_js.pp</copy>
         ```
 
 7. Restart MySQL to apply the changes:
