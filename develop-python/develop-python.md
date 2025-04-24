@@ -18,8 +18,8 @@ _Estimated Lab Time:_ 15 minutes
 
 In this lab, you will be guided through the following tasks:
 
-- Install Apache and PHP
-- Learn to create PHP / MYSQL Connect Application
+- Install  Python and Flask
+- Learn to create Python / MYSQL Connect Application
 - Deploy the Sample LMPF WEB Application
 
 ### Prerequisites
@@ -28,49 +28,65 @@ In this lab, you will be guided through the following tasks:
 - Some Experience with MySQL SQL and  PHP
 - Completed Lab 3
 
-## Task 1: Install App Server (APACHE)
+## Task 1: Setup Python Flask Environment
 
-1. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance IP"
+1. Install Python
+   ```bash
+   sudo dnf install python39 python39-devel python39-pip -y
+   ```
 
-     ```bash
-    <copy>ssh -i private_key_file opc@new_compute_instance_ip</copy>
-     ```
+2. Install required packages
+   ```bash
+   sudo dnf install gcc -y
+   ```
 
-2. Install app server
+3. Create a virtual environment
+   ```bash
+   mkdir /var/www/flask_app
+   cd /var/www/flask_app
+   python3.9 -m venv venv
+   source venv/bin/activate
+   ```
 
-    a. Install Apache
+4. Install Flask and related packages
+   ```bash
+   pip install flask flask-sqlalchemy pymysql gunicorn
+   ```
 
-    ```bash
-    <copy>sudo yum install httpd -y </copy>
-    ```
+5. Set up Gunicorn as a service
+   ```bash
+   sudo nano /etc/systemd/system/flask_app.service
+   ```
+   
+   Add the following:
+   ```
+   [Unit]
+   Description=Gunicorn instance to serve Flask application
+   After=network.target
 
-    b. Enable Apache
+   [Service]
+   User=apache
+   Group=apache
+   WorkingDirectory=/var/www/flask_app
+   Environment="PATH=/var/www/flask_app/venv/bin"
+   ExecStart=/var/www/flask_app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
 
-    ```bash
-    <copy>sudo systemctl enable httpd</copy>
-    ```
+   [Install]
+   WantedBy=multi-user.target
+   ```
 
-    c. Start Apache
+6. Enable and start Flask
+   ```bash
+   sudo systemctl enable flask_app
+   sudo systemctl start flask_app
+   ```
 
-    ```bash
-    <copy>sudo systemctl restart httpd</copy>
-    ```
+7. Configure firewall
+   ```bash
+   sudo firewall-cmd --permanent --add-port=5000/tcp
+   sudo firewall-cmd --reload
+   ```
 
-    d. Setup firewall
-
-    ```bash
-    <copy>sudo firewall-cmd --permanent --add-port=80/tcp</copy>
-    ```
-
-    e. Reload firewall
-
-    ```bash
-    <copy>sudo firewall-cmd --reload</copy>
-    ```
-
-3. From a browser test apache from your loacal machine using the Public IP Address of your Compute Instance
-
-    **Example: http://129.213....**
 
 ## Task 2: Install PHP
 
