@@ -1,14 +1,14 @@
-# Build and Test Apache/ PHP/ MySQL Web Application
+# Build and Test Web Application - LMPF: Linux, MySQL, Python, Flask
 
 ## Introduction
 
-MySQL Enterprise Edition integrates seamlessly with the LAMP (Linux, Apache, MySQL, PHP) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LAMP stack by:
+MySQL Enterprise Edition integrates seamlessly with the LMPF (Linux, Apache, MySQL, PHP) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LMPF stack by:
 
 - Running JavaScript functions in database
 - Using secure PHP connections (PDO)
 - Maintaining Apache/Linux compatibility
 
-After installing the LAMP Stack , you will Deploy and test the "Sakila Film Library with Time Converter" web application. This application displays the Sakila.Film data while providing a time conversion tool. Users can enter seconds and convert them to either HH:MM:SS format or written time descriptions using MySQL Enterprise Edition's JavaScript function. This LAMP-based application demonstrates practical use of database features within MySQL Enterprise Edition.
+After installing the LMPF Stack , you will Deploy and test the "Sakila Film Library with Time Converter" web application. This application displays the Sakila.Film data while providing a time conversion tool. Users can enter seconds and convert them to either HH:MM:SS format or written time descriptions using MySQL Enterprise Edition's JavaScript function. This LMPF-based application demonstrates practical use of database features within MySQL Enterprise Edition.
 
 **Note:** The application code in this lab is intended for educational purposes only. It is designed to help developers learn and practice application development skills with MySQL Enterprise Edition. The code is not designed to be used in a production environment
 
@@ -20,7 +20,7 @@ In this lab, you will be guided through the following tasks:
 
 - Install Apache and PHP
 - Learn to create PHP / MYSQL Connect Application
-- Deploy the Sample LAMP WEB Application
+- Deploy the Sample LMPF WEB Application
 
 ### Prerequisites
 
