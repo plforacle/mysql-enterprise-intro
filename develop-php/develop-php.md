@@ -219,22 +219,22 @@ In this lab, you will be guided through the following tasks:
 2. Download application code
 
     ```bash
-    <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ebnl0Yd1YwZkXBiQYZQu6nljiMWSTb9TdhZd4fF9SNGILS_QkYgr_q8E-VBd3x1Z/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web.zip</copy>
+    <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/rPTYzb6NhleKQN6i0Jnq3MJ_p_IAhDH4jm-a7Y5do65WWh5NnPdCmdkhJ2hCL1ID/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web-php.zip</copy>
     ```
 
 3. unzip Application code
 
     ```bash
-    <copy>sudo unzip sakila-web.zip</copy>
+    <copy>sudo unzip sakila-web-php.zip</copy>
     ```
 
     ```bash
-    <copy>cd sakila-web</copy>
+    <copy>cd sakila-web-php.zip</copy>
     ```
 
 4. Run the application as follows (Use your coupute IP address):
 
-    http://127.0.0.../sakila-web/
+    http://127.0.0.../sakila-web-php.php/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
@@ -271,4 +271,4 @@ In this lab, you will be guided through the following tasks:
 - **Author** - Perside Foster, MySQL Solution Engineering
 - **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director,
 Selena Sanchez, MySQL Staff Solutions Engineer 
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March  2025
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, April  2025
