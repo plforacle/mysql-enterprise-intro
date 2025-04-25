@@ -30,61 +30,100 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 1: Setup Python Flask Environment
 
-1. Install Python
-   ```bash
-   sudo dnf install python39 python39-devel python39-pip -y
-   ```
+1. Go to home folder
 
-2. Install required packages
-   ```bash
-   sudo dnf install gcc -y
-   ```
+    ```bash
+    <copy>cd /home/opc</copy>
+    ```
 
-3. Create a virtual environment
-   ```bash
-   mkdir /var/www/flask_app
-   cd /var/www/flask_app
-   python3.9 -m venv venv
-   source venv/bin/activate
-   ```
+2. Install Python
 
-4. Install Flask and related packages
-   ```bash
-   pip install flask flask-sqlalchemy pymysql gunicorn
-   ```
+    ```bash
+    <copy>sudo dnf install python39 python39-devel python39-pip -y</copy>
+    ```
 
-5. Set up Gunicorn as a service
-   ```bash
-   sudo nano /etc/systemd/system/flask_app.service
+3. Install required packages
+
+    ```bash
+    <copy>sudo dnf install gcc -y</copy>
+    ```
+
+4. Create a virtual environment
+
+    ```bash
+    <copy>sudo mkdir /var/www</copy>
+    ```
+
+    ```bash
+    <copy>sudo mkdir /var/www/flask_app</copy>
+    ```
+
+    - Set proper permissions
+
+    ```bash
+    <copy>sudo chown -R $(whoami):$(whoami) /var/www/flask_app</copy>
+    ```
+
+    ```bash
+    <copy>cd /var/www/flask_app</copy>
+    ```
+
+    ```bash
+    <copy>sudo python3.9 -m venv venv</copy>
+    ```
+
+    ```bash
+    <copy>source venv/bin/activate</copy>
+    ```
+
+5. Install Flask and related packages
+
+    ```bash
+    <copy>pip install flask flask-sqlalchemy pymysql gunicorn</copy>
+    ```
+
+6. Set up Gunicorn as a service
+
+    ```bash
+    <copy>sudo nano /etc/systemd/system/flask_app.service</copy>
+    ```
+
+   Add the following:
+
+    ```
+    <copy>[Unit]
+    Description=Gunicorn instance to serve Flask application
+    After=network.target
+
+    [Service]
+    User=apache
+    Group=apache
+    WorkingDirectory=/var/www/flask_app
+    Environment="PATH=/var/www/flask_app/venv/bin"
+    ExecStart=/var/www/flask_app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
+
+    [Install]
+    WantedBy=multi-user.target</copy>
+    ```
+
+7. Enable and start Flask
+
+    ```bash
+    <copy>sudo systemctl enable flask_app</copy>
+    ```
+
+    ```bash
+    <copy>sudo systemctl start flask_app</copy>
+    ```
+
+8. Configure firewall
+
+    ```bash
+    <copy>sudo firewall-cmd --permanent --add-port=5000/tcp </copy>
    ```
    
-   Add the following:
-   ```
-   [Unit]
-   Description=Gunicorn instance to serve Flask application
-   After=network.target
-
-   [Service]
-   User=apache
-   Group=apache
-   WorkingDirectory=/var/www/flask_app
-   Environment="PATH=/var/www/flask_app/venv/bin"
-   ExecStart=/var/www/flask_app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
-
-   [Install]
-   WantedBy=multi-user.target
-   ```
-
-6. Enable and start Flask
-   ```bash
-   sudo systemctl enable flask_app
-   sudo systemctl start flask_app
-   ```
-
-7. Configure firewall
-   ```bash
-   sudo firewall-cmd --permanent --add-port=5000/tcp
-   sudo firewall-cmd --reload
+    ```bash
+    <copy>sudo firewall-cmd --reload</copy>
    ```
 
 ## Task 2: Deploy Sakila Film Web / MySQL JavaScript Stored Function Application
@@ -111,28 +150,24 @@ In this lab, you will be guided through the following tasks:
     <copy>tree sakila-web-python</copy>
     ```
 
-4. Set proper permissions
+    - Application directory structure:
+
+    ![Sakila Tree](./images/sakila-tree.png "Sakila Tree")
+
+
 
     ```bash
-    <copy>sudo chown -R apache:apache /var/www/flask_app</copy>
+    <copy>cd sakila-web-python</copy>
     ```
 
-5. Set up for development testing
-
-    ```bash
-    <copy>cd /var/www/flask_app</copy>
-    ```
-    ```bash
-    <copy>source venv/bin/activate</copy>
-    ```
 
     ```bash
     <copy>python app.py</copy>
     ```
 
-4. Run the application as follows (Use your coupute IP address):
+4. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ):
 
-    http://132.145.../sakila-web-python.php/
+    http://127.0.0.1:5000 
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
