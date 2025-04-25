@@ -58,12 +58,6 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo mkdir /var/www/flask_app</copy>
     ```
 
-    - Set proper permissions
-
-    ```bash
-    <copy>sudo chown -R $(whoami):$(whoami) /var/www/flask_app</copy>
-    ```
-
     ```bash
     <copy>cd /var/www/flask_app</copy>
     ```
@@ -76,13 +70,19 @@ In this lab, you will be guided through the following tasks:
     <copy>source venv/bin/activate</copy>
     ```
 
-5. Install Flask and related packages
+5. Set proper permissions
 
     ```bash
-    <copy>pip install flask flask-sqlalchemy pymysql gunicorn</copy>
+    <copy>sudo chown -R $(whoami):$(whoami) /var/www/flask_app</copy>
     ```
 
-6. Set up Gunicorn as a service
+6. Install Flask and related packages
+
+    ```bash
+    <copy>pip install flask flask-sqlalchemy pymysql cryptography gunicorn</copy>
+    ```
+
+7. Set up Gunicorn as a service
 
     ```bash
     <copy>sudo nano /etc/systemd/system/flask_app.service</copy>
@@ -90,7 +90,7 @@ In this lab, you will be guided through the following tasks:
 
    Add the following:
 
-    ```
+    ```bash
     <copy>[Unit]
     Description=Gunicorn instance to serve Flask application
     After=network.target
@@ -106,7 +106,7 @@ In this lab, you will be guided through the following tasks:
     WantedBy=multi-user.target</copy>
     ```
 
-7. Enable and start Flask
+8. Enable and start Flask
 
     ```bash
     <copy>sudo systemctl enable flask_app</copy>
@@ -116,17 +116,17 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo systemctl start flask_app</copy>
     ```
 
-8. Configure firewall
+9. Configure firewall
 
     ```bash
     <copy>sudo firewall-cmd --permanent --add-port=5000/tcp </copy>
    ```
-   
+
     ```bash
     <copy>sudo firewall-cmd --reload</copy>
    ```
 
-## Task 2: Deploy Sakila Film Web / MySQL JavaScript Stored Function Application
+## Task 2: Deploy and Run Sakila Film Web / MySQL JavaScript Stored Function Application
 
 1. Go to the development folder
 
@@ -154,24 +154,38 @@ In this lab, you will be guided through the following tasks:
 
     ![Sakila Tree](./images/sakila-tree.png "Sakila Tree")
 
+4. Update file app.py  to change the following values if needed
 
+    - DB_CONFIG = {
+        - 'host': 'localhost', # Change this if your MySQL server is hosted elsewhere
+        - 'user': 'admin', # Change this to your MySQL username
+        - 'password': '', # Change this to your MySQL password
+        - 'db': 'sakila',
+        - 'charset': 'utf8mb4',
+        - 'cursorclass': DictCursor
+    - }
 
     ```bash
-    <copy>cd sakila-web-python</copy>
+    <copy>cd sakila-web-php</copy>
     ```
 
+    ```bash
+    <copy>sudo nano  db_config.php</copy>
+    ```
+
+5. Execute the Python script "app.py" using the Python interpreter.
 
     ```bash
     <copy>python app.py</copy>
     ```
 
-4. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ):
+6. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ):
 
-    http://127.0.0.1:5000 
+    http://150.136...:5000 
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
-5. Test the application with following examples(Enter seconds, then select **short** or **long** format):
+7. Test the application with following examples(Enter seconds, then select **short** or **long** format):
 
     a. Test Case 1 - Movie Length:
     - Input: 7200 seconds (typical movie)

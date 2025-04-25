@@ -228,17 +228,28 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo unzip sakila-web-php.zip</copy>
     ```
 
+4. Update file db_config.php to change the following values if needed
+
+    - 'host' => 'localhost',
+    - 'user' => 'admin',
+    - 'password' => 'Welcome#123',
+    - 'database' => 'sakila'
+
     ```bash
-    <copy>cd sakila-web-php.zip</copy>
+    <copy>cd sakila-web-php</copy>
     ```
 
-4. Run the application as follows (Use your coupute IP address):
+    ```bash
+    <copy>sudo nano  db_config.php</copy>
+    ```
+
+5. Run the application as follows (Use your coupute IP address):
 
     http://127.0.0.../sakila-web-php.php/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
-5. Test the application with following examples(Enter seconds, then select **short** or **long** format):
+6. Test the application with following examples(Enter seconds, then select **short** or **long** format):
 
     a. Test Case 1 - Movie Length:
     - Input: 7200 seconds (typical movie)
