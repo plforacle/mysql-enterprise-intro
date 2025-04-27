@@ -240,7 +240,7 @@ In this lab, you will be guided through the following tasks:
     ```
 
     ```bash
-    <copy>sudo nano  db_config.php</copy>
+    <copy>sudo nano  config.php</copy>
     ```
 
 5. Run the application as follows (Use your coupute IP address):

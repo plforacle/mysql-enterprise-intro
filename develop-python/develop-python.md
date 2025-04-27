@@ -166,11 +166,11 @@ In this lab, you will be guided through the following tasks:
     - }
 
     ```bash
-    <copy>cd sakila-web-php</copy>
+    <copy>cd sakila-web-python</copy>
     ```
 
     ```bash
-    <copy>sudo nano  db_config.php</copy>
+    <copy>sudo nano  app.py</copy>
     ```
 
 5. Execute the Python script "app.py" using the Python interpreter.
