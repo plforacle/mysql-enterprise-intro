@@ -4,7 +4,7 @@
 
 **Important:** You can install the Python (LMPF) stack or either the PHP (LAMP) stack on this server — not both. 
 
-MySQL Enterprise Edition integrates seamlessly with the LMPF (Linux, Apache, MySQL, PHP) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LMPF stack by:
+MySQL Enterprise Edition integrates seamlessly with the LMPF (Linux, MySQL, Python, Flask) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LMPF stack by:
 
 - Running JavaScript functions in database
 - Using secure PHP connections (PDO)
@@ -21,13 +21,12 @@ _Estimated Lab Time:_ 15 minutes
 In this lab, you will be guided through the following tasks:
 
 - Install  Python and Flask
-- Learn to create Python / MYSQL Connect Application
 - Deploy the Sample LMPF WEB Application
 
 ### Prerequisites
 
 - An Oracle Trial or Paid Cloud Account
-- Some Experience with MySQL SQL and  PHP
+- Some Experience with MySQL SQL and  Python
 - Completed Lab 3
 
 ## Task 1: Setup Python Flask Environment
@@ -225,7 +224,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Learn More
 
-- [Install Apache and PHP on an Oracle Linux Instance](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-oracle-linux/01-summary.htm)
+- [Install Flask on an Ubuntu VM](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/flask-on-ubuntu/01oci-ubuntu-flask-summary.htm#install-flask-ubuntu)
 
 
 ## Acknowledgements
@@ -233,4 +232,4 @@ In this lab, you will be guided through the following tasks:
 - **Author** - Perside Foster, MySQL Solution Engineering
 - **Contributor** - Nick Mader, MySQL Global Channel Enablement & Strategy Director,
 Selena Sanchez, MySQL Staff Solutions Engineer 
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March  2025
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, April  2025
