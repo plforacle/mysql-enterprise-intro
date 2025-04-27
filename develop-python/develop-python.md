@@ -2,6 +2,8 @@
 
 ## Introduction
 
+**Important:** You can install the Python (LMPF) stack or either the PHP (LAMP) stack on this server — not both. 
+
 MySQL Enterprise Edition integrates seamlessly with the LMPF (Linux, Apache, MySQL, PHP) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LMPF stack by:
 
 - Running JavaScript functions in database
@@ -36,19 +38,32 @@ In this lab, you will be guided through the following tasks:
     <copy>cd /home/opc</copy>
     ```
 
-2. Install Python
+2. Verify that the PHP (LAMP) stack has not already been installed on this server.
+
+    ```bash
+    <copy>php -v 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "PHP is installed. You cannot install the Python (LMPF) stack. Please exit this Lab"
+    else
+        echo "PHP is not installed. You may proceed to install the Python (LMPF) stack."
+    fi </copy>   
+    ```
+
+
+3. Install Python
 
     ```bash
     <copy>sudo dnf install python39 python39-devel python39-pip -y</copy>
     ```
 
-3. Install required packages
+4. Install required packages
 
     ```bash
     <copy>sudo dnf install gcc -y</copy>
     ```
 
-4. Create a virtual environment
+5. Create a virtual environment
 
     ```bash
     <copy>sudo mkdir /var/www</copy>
@@ -70,19 +85,19 @@ In this lab, you will be guided through the following tasks:
     <copy>source venv/bin/activate</copy>
     ```
 
-5. Set proper permissions
+6. Set proper permissions
 
     ```bash
     <copy>sudo chown -R $(whoami):$(whoami) /var/www/flask_app</copy>
     ```
 
-6. Install Flask and related packages
+7. Install Flask and related packages
 
     ```bash
     <copy>pip install flask flask-sqlalchemy pymysql cryptography gunicorn</copy>
     ```
 
-7. Set up Gunicorn as a service
+8. Set up Gunicorn as a service
 
     ```bash
     <copy>sudo nano /etc/systemd/system/flask_app.service</copy>
@@ -106,7 +121,7 @@ In this lab, you will be guided through the following tasks:
     WantedBy=multi-user.target</copy>
     ```
 
-8. Enable and start Flask
+9. Enable and start Flask
 
     ```bash
     <copy>sudo systemctl enable flask_app</copy>
@@ -116,15 +131,15 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo systemctl start flask_app</copy>
     ```
 
-9. Configure firewall
+10. Configure firewall
 
     ```bash
     <copy>sudo firewall-cmd --permanent --add-port=5000/tcp </copy>
-   ```
+    ```
 
     ```bash
     <copy>sudo firewall-cmd --reload</copy>
-   ```
+    ```
 
 ## Task 2: Deploy and Run Sakila Film Web / MySQL JavaScript Stored Function Application
 

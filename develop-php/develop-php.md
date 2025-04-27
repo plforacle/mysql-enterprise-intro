@@ -2,6 +2,8 @@
 
 ## Introduction
 
+**Important:** You can install either the PHP (LAMP) stack or the Python (LMPF) stack on this server — not both.  
+
 MySQL Enterprise Edition integrates seamlessly with the LAMP (Linux, Apache, MySQL, PHP) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LAMP stack by:
 
 - Running JavaScript functions in database
@@ -36,7 +38,19 @@ In this lab, you will be guided through the following tasks:
     <copy>ssh -i private_key_file opc@new_compute_instance_ip</copy>
      ```
 
-2. Install app server
+2. Verify that the Python (LMPF) stack has not already been installed on this server.
+
+     ```bash
+    <copy>python --version 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "Python is installed. You cannot install the PHP (LAMP) stack. Please exit this Lab"
+    else
+        echo "Python is not installed. You may proceed to install the PHP (LAMP) stack."
+    fi</copy>
+     ```
+
+3. Install app server
 
     a. Install Apache
 
@@ -68,7 +82,7 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo firewall-cmd --reload</copy>
     ```
 
-3. From a browser test apache from your loacal machine using the Public IP Address of your Compute Instance
+4. From a browser test apache from your loacal machine using the Public IP Address of your Compute Instance
 
     **Example: http://129.213....**
 
@@ -230,10 +244,10 @@ In this lab, you will be guided through the following tasks:
 
 4. Update file db_config.php to change the following values if needed
 
-    - 'host' => 'localhost',
-    - 'user' => 'admin',
-    - 'password' => 'Welcome#123',
-    - 'database' => 'sakila'
+    - $host = 'localhost'; // Change this if your MySQL server is hosted elsewhere
+    - $dbname = 'sakila';
+    - $username = 'admin'; // Change this to your MySQL username
+    - $password = ''; // Change this to your MySQL password
 
     ```bash
     <copy>cd sakila-web-php</copy>
