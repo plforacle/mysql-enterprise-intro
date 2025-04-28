@@ -148,7 +148,13 @@ In this lab, you will be guided through the following tasks:
     **Destination Port Range**:
 
     ```bash
-    <copy>80,443</copy>
+    <copy>80,443,5000</copy>
+    ```
+
+    **Description**
+
+    ```bash
+    <copy>Web app ports</copy>
     ```
 
     ![Ingress rules](./images/18-enter-ingess-rules-default-security-list.png "Ingress rules") 
