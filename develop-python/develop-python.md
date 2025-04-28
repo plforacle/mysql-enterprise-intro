@@ -193,9 +193,11 @@ In this lab, you will be guided through the following tasks:
     <copy>python app.py</copy>
     ```
 
-6. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ):
+6. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ). 
 
-    http://150.136...:5000 
+    - Be sure to use **http://** not   https://:
+
+        http://150.136...:5000 
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
