@@ -7,8 +7,8 @@
 MySQL Enterprise Edition integrates seamlessly with the LMPF (Linux, MySQL, Python, Flask) stack, enhancing open-source capabilities with enterprise features. MySQL EE works with the LMPF stack by:
 
 - Running JavaScript functions in database
-- Using secure PHP connections (PDO)
-- Maintaining Apache/Linux compatibility
+- Using PyMySQL Package
+- Maintaining Flask/Linux compatibility
 
 After installing the LMPF Stack , you will Deploy and test the "Sakila Film Library with Time Converter" web application. This application displays the Sakila.Film data while providing a time conversion tool. Users can enter seconds and convert them to either HH:MM:SS format or written time descriptions using MySQL Enterprise Edition's JavaScript function. This LMPF-based application demonstrates practical use of database features within MySQL Enterprise Edition.
 
@@ -41,7 +41,6 @@ In this lab, you will be guided through the following tasks:
 
     ```bash
     <copy>php -v 2>/dev/null
-
     if [ $? -eq 0 ]; then
         echo "PHP is installed. You cannot install the Python (LMPF) stack. Please exit this Lab"
     else
@@ -49,119 +48,88 @@ In this lab, you will be guided through the following tasks:
     fi </copy>   
     ```
 
-
-3. Install Python
+3. Check for Python 3.9 and install if needed
 
     ```bash
-    <copy>sudo dnf install python39 python39-devel python39-pip -y</copy>
+        <copy>command -v python3.9 >/dev/null 2>&1 || { 
+            echo >&2 "❌ Python 3.9 is not installed. Installing..."; 
+            sudo dnf module enable -y python39
+            sudo dnf install -y python39 python39-pip python39-devel
+        }</copy>
     ```
 
-4. Install required packages
+4. Verify Python installation
 
     ```bash
-    <copy>sudo dnf install gcc -y</copy>
+        <copy>python3.9 --version
+        pip3.9 --version
+        command -v python3.9</copy>
     ```
 
-5. Create a virtual environment
+5. Setup directory structure
 
     ```bash
-    <copy>sudo mkdir /var/www</copy>
+        <copy>sudo mkdir -p /var/www/
+        sudo chown -R opc:opc /var/www/
+        cd /var/www/</copy>
     ```
 
+6. Create and activate virtual environment
+
     ```bash
-    <copy>sudo mkdir /var/www/flask_app</copy>
+        <copy>python3.9 -m venv venv
+        source /var/www/venv/bin/activate</copy>
     ```
 
+7. Download and extract Python packages
+
     ```bash
-    <copy>cd /var/www/flask_app</copy>
+        <copy>wget https://objectstorage.us-ashbur
+        n-1.oraclecloud.com/p/E6EsKKHbTXMp0siJb6GzG4vS1eKnl2vfdZua_7do_epdxGriBDEvuxPRmY45VjCM/n/idazzjlcjqzj/b/livelab_apps/o/python_packages.tar.gz
+        tar -xzvf python_packages.tar.gz</copy>
     ```
 
+8. Install Python packages
+
     ```bash
-    <copy>sudo python3.9 -m venv venv</copy>
+        <copy>cd /var/www/offline_packages/
+        <copy>pip install --no-index --find-links=. flask flask-sqlalchemy pymysql cryptography gunicorn
+        </copy>
     ```
 
+9. Create and setup flask app directory
+
     ```bash
-    <copy>source venv/bin/activate</copy>
+        <copy>mkdir -p /var/www/flask_app/
+        cd /var/www/flask_app/</copy>
     ```
 
-6. Set proper permissions
+
+## Task 2: Deploy Sakila Film Web / MySQL JavaScript Stored Function Application
+
+1. Dowload the application
 
     ```bash
-    <copy>sudo chown -R $(whoami):$(whoami) /var/www/flask_app</copy>
+        <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ojnCuO6Nk8l9tVyocciB9GpJgYR5CyZZ_bgr2-emm9lGxn-Tdf1rqeHd1NgcjgdQ/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web-python.zip
+        unzip sakila-web-python.zip</copy>
     ```
 
-7. Install Flask and related packages
+2. Check if tree is installed, install if not
 
     ```bash
-    <copy>pip install flask flask-sqlalchemy pymysql cryptography gunicorn</copy>
+        <copy>command -v tree >/dev/null 2>&1 || sudo dnf install -y tree
+        tree sakila-web-python</copy>
     ```
 
-8. Set up Gunicorn as a service
+3. Navigate to app directory and edit configuration
 
     ```bash
-    <copy>sudo nano /etc/systemd/system/flask_app.service</copy>
-    ```
-
-   Add the following:
-
-    ```bash
-    <copy>[Unit]
-    Description=Gunicorn instance to serve Flask application
-    After=network.target
-
-    [Service]
-    User=apache
-    Group=apache
-    WorkingDirectory=/var/www/flask_app
-    Environment="PATH=/var/www/flask_app/venv/bin"
-    ExecStart=/var/www/flask_app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
-
-    [Install]
-    WantedBy=multi-user.target</copy>
-    ```
-
-9. Enable and start Flask
-
-    ```bash
-    <copy>sudo systemctl enable flask_app</copy>
-    ```
-
-    ```bash
-    <copy>sudo systemctl start flask_app</copy>
-    ```
-
-10. Configure firewall
-
-    ```bash
-    <copy>sudo firewall-cmd --permanent --add-port=5000/tcp </copy>
+        <copy>cd sakila-web-python
+        nano app.py</copy>
     ```
 
     ```bash
-    <copy>sudo firewall-cmd --reload</copy>
-    ```
-
-## Task 2: Deploy and Run Sakila Film Web / MySQL JavaScript Stored Function Application
-
-1. Go to the development folder
-
-    ```bash
-    <copy>cd /var/www/flask_app/</copy>
-    ```
-
-2. Download application code
-
-    ```bash
-    <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ojnCuO6Nk8l9tVyocciB9GpJgYR5CyZZ_bgr2-emm9lGxn-Tdf1rqeHd1NgcjgdQ/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web-python.zip</copy>
-    ```
-
-3. unzip Application code
-
-    ```bash
-    <copy>sudo unzip sakila-web-python.zip</copy>
-    ```
-
-    ```bash
-    <copy>tree sakila-web-python</copy>
+        <copy>tree sakila-web-python</copy>
     ```
 
     - Application directory structure:
@@ -170,22 +138,24 @@ In this lab, you will be guided through the following tasks:
 
 4. Update file app.py  to change the following values if needed
 
-    - DB_CONFIG = {
-        - 'host': 'localhost', # Change this if your MySQL server is hosted elsewhere
-        - 'user': 'admin', # Change this to your MySQL username
-        - 'password': '', # Change this to your MySQL password
-        - 'db': 'sakila',
-        - 'charset': 'utf8mb4',
-        - 'cursorclass': DictCursor
-    - }
-
     ```bash
-    <copy>cd sakila-web-python</copy>
+        <copy>cd sakila-web-python</copy>
     ```
 
     ```bash
-    <copy>sudo nano  app.py</copy>
+        <copy>sudo nano  app.py</copy>
     ```
+
+    - Change the following values if needed
+
+        - DB_CONFIG = {
+            - 'host': 'localhost', # Change this if your MySQL server is hosted elsewhere
+            - 'user': 'admin', # Change this to your MySQL username
+            - 'password': '', # Change this to your MySQL password
+            - 'db': 'sakila',
+            - 'charset': 'utf8mb4',
+            - 'cursorclass': DictCursor
+        - }
 
 5. Execute the Python script "app.py" using the Python interpreter.
 
@@ -222,7 +192,6 @@ In this lab, you will be guided through the following tasks:
     - Input: 90 seconds (quick scene)
     - Short format: 00:01:30
     - Long format: 1 minute 30 seconds
-
 
 ## Learn More
 

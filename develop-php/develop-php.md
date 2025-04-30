@@ -242,7 +242,14 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo unzip sakila-web-php.zip</copy>
     ```
 
-4. Update file db_config.php to change the following values if needed
+4. Check if tree is installed, install if not
+
+    ```bash
+        <copy>command -v tree >/dev/null 2>&1 || sudo dnf install -y tree
+        tree sakila-web-php</copy>
+    ```
+
+5. Update file db_config.php to change the following values if needed
 
     - $host = 'localhost'; // Change this if your MySQL server is hosted elsewhere
     - $dbname = 'sakila';
@@ -257,13 +264,13 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo nano  config.php</copy>
     ```
 
-5. Run the application as follows (Use your coupute IP address):
+6. Run the application as follows (Use your coupute IP address):
 
     http://127.0.0.../sakila-web-php.php/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
-6. Test the application with following examples(Enter seconds, then select **short** or **long** format):
+7. Test the application with following examples(Enter seconds, then select **short** or **long** format):
 
     a. Test Case 1 - Movie Length:
     - Input: 7200 seconds (typical movie)
@@ -285,11 +292,9 @@ In this lab, you will be guided through the following tasks:
     - Short format: 00:01:30
     - Long format: 1 minute 30 seconds
 
-
 ## Learn More
 
 - [Install Apache and PHP on an Oracle Linux Instance](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-oracle-linux/01-summary.htm)
-
 
 ## Acknowledgements
 
