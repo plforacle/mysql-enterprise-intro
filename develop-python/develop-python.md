@@ -29,7 +29,7 @@ In this lab, you will be guided through the following tasks:
 - Some Experience with MySQL SQL and  Python
 - Completed Lab 3
 
-## Task 1: Setup Python Flask Environment
+## Task 1: Install Python
 
 1. Go to home folder
 
@@ -66,7 +66,9 @@ In this lab, you will be guided through the following tasks:
         command -v python3.9</copy>
     ```
 
-5. Configure firewall
+## Task 2: Setup the Python environment
+
+1. Configure firewall
 
     ```bash
         <copy>sudo firewall-cmd --permanent --add-port=5000/tcp </copy>
@@ -76,7 +78,7 @@ In this lab, you will be guided through the following tasks:
         <copy>sudo firewall-cmd --reload</copy>
     ```
 
-6. Setup the directory structure
+2. Setup the directory structure
 
     ```bash
         <copy>sudo mkdir -p /var/www/
@@ -84,7 +86,7 @@ In this lab, you will be guided through the following tasks:
         cd /var/www/</copy>
     ```
 
-7. Download and extract the Python packages
+3. Download and extract the Python packages
 
     ```bash
         <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/E6EsKKHbTXMp0siJb6GzG4vS1eKnl2vfdZua_7do_epdxGriBDEvuxPRmY45VjCM/n/idazzjlcjqzj/b/livelab_apps/o/python_packages.tar.gz</copy>
@@ -96,7 +98,14 @@ In this lab, you will be guided through the following tasks:
         <copy>tar -xzvf python_packages.tar.gz</copy>
     ```
 
-8. Install the Python packages
+4. Create and activate virtual environment
+
+    ```bash
+        <copy>python3.9 -m venv venv
+        source /var/www/venv/bin/activate</copy>
+    ```
+
+5. Install the Python packages
 
     ```bash
         <copy>cd /var/www/offline_packages/
@@ -104,24 +113,24 @@ In this lab, you will be guided through the following tasks:
         </copy>
     ```
 
-9. Create and setup the flask app directory
+
+## Task 3: Deploy Sakila Film Web / MySQL JavaScript Stored Function Application
+
+1. Create and setup the flask app directory
 
     ```bash
         <copy>mkdir -p /var/www/flask_app/
         cd /var/www/flask_app/</copy>
     ```
 
-
-## Task 2: Deploy Sakila Film Web / MySQL JavaScript Stored Function Application
-
-1. Dowload the application
+2. Dowload the application
 
     ```bash
         <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ojnCuO6Nk8l9tVyocciB9GpJgYR5CyZZ_bgr2-emm9lGxn-Tdf1rqeHd1NgcjgdQ/n/idazzjlcjqzj/b/livelab_apps/o/sakila-web-python.zip
         unzip sakila-web-python.zip</copy>
     ```
 
-2. Check if tree is installed, install it if not
+3. Check if tree is installed, install it if not
 
     ```bash
         <copy>command -v tree >/dev/null 2>&1 || sudo dnf install -y tree
@@ -132,7 +141,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Sakila Tree](./images/sakila-tree.png "Sakila Tree")
 
-3. Update file app.py  to change the following values if needed
+4. Update file app.py  to change the following values if needed
 
     ```bash
         <copy>cd sakila-web-python</copy>
@@ -153,7 +162,7 @@ In this lab, you will be guided through the following tasks:
             - 'cursorclass': DictCursor
         - }
 
-## Task 3: Run  Sakila Film Web / MySQL JavaScript Stored Function Application
+## Task 4: Run  Sakila Film Web / MySQL JavaScript Stored Function Application
 
 1. Setup the Python environment for application execution.
 
@@ -161,7 +170,7 @@ In this lab, you will be guided through the following tasks:
         <copy>cd /var/www/flask_app/sakila-web-python</copy>
     ```
 
-    - Activate the virtual environment
+    - Activate the virtual environment 
 
     ```bash
         <copy>python3.9 -m venv venv

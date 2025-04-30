@@ -249,12 +249,12 @@ In this lab, you will be guided through the following tasks:
         tree sakila-web-php</copy>
     ```
 
-5. Update file db_config.php to change the following values if needed
+    - Application directory structure:
 
-    - $host = 'localhost'; // Change this if your MySQL server is hosted elsewhere
-    - $dbname = 'sakila';
-    - $username = 'admin'; // Change this to your MySQL username
-    - $password = ''; // Change this to your MySQL password
+    ![Sakila Tree](./images/sakila-tree-php.png "Sakila Tree")
+
+
+5. Update file db_config.php 
 
     ```bash
     <copy>cd sakila-web-php</copy>
@@ -264,9 +264,15 @@ In this lab, you will be guided through the following tasks:
     <copy>sudo nano  config.php</copy>
     ```
 
+    - Change the following values if needed
+        - $host = 'localhost'; // Change this if your MySQL server is hosted elsewhere
+        - $dbname = 'sakila';
+        - $username = 'admin'; // Change this to your MySQL username
+        - $password = ''; // Change this to your MySQL password
+
 6. Run the application as follows (Use your coupute IP address):
 
-    http://127.0.0.../sakila-web-php.php/
+    http://127.0.0.../sakila-web-php/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
