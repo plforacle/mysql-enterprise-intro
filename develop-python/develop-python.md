@@ -48,7 +48,7 @@ In this lab, you will be guided through the following tasks:
     fi </copy>   
     ```
 
-3. Check for Python 3.9 and install if needed
+3. Check for Python 3.9 and install it if needed
 
     ```bash
         <copy>command -v python3.9 >/dev/null 2>&1 || { 
@@ -58,7 +58,7 @@ In this lab, you will be guided through the following tasks:
         }</copy>
     ```
 
-4. Verify Python installation
+4. Verify the Python installation
 
     ```bash
         <copy>python3.9 --version
@@ -66,7 +66,17 @@ In this lab, you will be guided through the following tasks:
         command -v python3.9</copy>
     ```
 
-5. Setup directory structure
+5. Configure firewall
+
+    ```bash
+        <copy>sudo firewall-cmd --permanent --add-port=5000/tcp </copy>
+    ```
+
+    ```bash
+        <copy>sudo firewall-cmd --reload</copy>
+    ```
+
+6. Setup the directory structure
 
     ```bash
         <copy>sudo mkdir -p /var/www/
@@ -74,30 +84,27 @@ In this lab, you will be guided through the following tasks:
         cd /var/www/</copy>
     ```
 
-6. Create and activate virtual environment
+7. Download and extract the Python packages
 
     ```bash
-        <copy>python3.9 -m venv venv
-        source /var/www/venv/bin/activate</copy>
+        <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/E6EsKKHbTXMp0siJb6GzG4vS1eKnl2vfdZua_7do_epdxGriBDEvuxPRmY45VjCM/n/idazzjlcjqzj/b/livelab_apps/o/python_packages.tar.gz</copy>
     ```
 
-7. Download and extract Python packages
+    - Unzip Python packages
 
     ```bash
-        <copy>wget https://objectstorage.us-ashbur
-        n-1.oraclecloud.com/p/E6EsKKHbTXMp0siJb6GzG4vS1eKnl2vfdZua_7do_epdxGriBDEvuxPRmY45VjCM/n/idazzjlcjqzj/b/livelab_apps/o/python_packages.tar.gz
-        tar -xzvf python_packages.tar.gz</copy>
+        <copy>tar -xzvf python_packages.tar.gz</copy>
     ```
 
-8. Install Python packages
+8. Install the Python packages
 
     ```bash
         <copy>cd /var/www/offline_packages/
-        <copy>pip install --no-index --find-links=. flask flask-sqlalchemy pymysql cryptography gunicorn
+        pip install --no-index --find-links=. flask flask-sqlalchemy pymysql cryptography gunicorn
         </copy>
     ```
 
-9. Create and setup flask app directory
+9. Create and setup the flask app directory
 
     ```bash
         <copy>mkdir -p /var/www/flask_app/
@@ -114,29 +121,18 @@ In this lab, you will be guided through the following tasks:
         unzip sakila-web-python.zip</copy>
     ```
 
-2. Check if tree is installed, install if not
+2. Check if tree is installed, install it if not
 
     ```bash
         <copy>command -v tree >/dev/null 2>&1 || sudo dnf install -y tree
         tree sakila-web-python</copy>
     ```
 
-3. Navigate to app directory and edit configuration
-
-    ```bash
-        <copy>cd sakila-web-python
-        nano app.py</copy>
-    ```
-
-    ```bash
-        <copy>tree sakila-web-python</copy>
-    ```
-
     - Application directory structure:
 
     ![Sakila Tree](./images/sakila-tree.png "Sakila Tree")
 
-4. Update file app.py  to change the following values if needed
+3. Update file app.py  to change the following values if needed
 
     ```bash
         <copy>cd sakila-web-python</copy>
@@ -157,13 +153,28 @@ In this lab, you will be guided through the following tasks:
             - 'cursorclass': DictCursor
         - }
 
-5. Execute the Python script "app.py" using the Python interpreter.
+## Task 3: Run  Sakila Film Web / MySQL JavaScript Stored Function Application
+
+1. Setup the Python environment for application execution.
 
     ```bash
-    <copy>python app.py</copy>
+        <copy>cd /var/www/flask_app/sakila-web-python</copy>
     ```
 
-6. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ). 
+    - Activate the virtual environment
+
+    ```bash
+        <copy>python3.9 -m venv venv
+        source /var/www/venv/bin/activate</copy>
+    ```
+
+    - Execute the Python script "app.py" using the Python interpreter 
+
+    ```bash
+        <copy>python app.py</copy>
+    ```
+
+2. Run the application from your browser as follows (Replace 127.0.0.1 with your IP address ). 
 
     - Be sure to use **http://** not   https://:
 
@@ -171,7 +182,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
-7. Test the application with following examples(Enter seconds, then select **short** or **long** format):
+3. Test the application with following examples(Enter seconds, then select **short** or **long** format):
 
     a. Test Case 1 - Movie Length:
     - Input: 7200 seconds (typical movie)
