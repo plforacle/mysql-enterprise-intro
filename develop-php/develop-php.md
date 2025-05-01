@@ -41,13 +41,12 @@ In this lab, you will be guided through the following tasks:
 2. Verify that the Python (LMPF) stack has not already been installed on this server.
 
      ```bash
-    <copy>python --version 2>/dev/null
-
-    if [ $? -eq 0 ]; then
-        echo "Python is installed. You cannot install the PHP (LAMP) stack. Please exit this Lab"
-    else
-        echo "Python is not installed. You may proceed to install the PHP (LAMP) stack."
-    fi</copy>
+    <copy>python -c "import flask" 2>/dev/null
+        if [ $? -eq 0 ]; then
+            echo "Python Flask is installed. You cannot install the PHP (LAMP) stack. Please exit this Lab."
+        else
+            echo "Python Flask is not installed. You may proceed to install the PHP (LAMP) stack."
+        fi</copy>
      ```
 
 3. Install app server
