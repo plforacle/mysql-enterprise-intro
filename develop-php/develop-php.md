@@ -269,13 +269,26 @@ In this lab, you will be guided through the following tasks:
         - $username = 'admin'; // Change this to your MySQL username
         - $password = ''; // Change this to your MySQL password
 
-6. Run the application as follows (Use your coupute IP address):
+6. **Important** - The following command puts only the MySQL process in permissive mode, leaving the rest of your system protected by SELinux. It tells SELinux to allow all actions by MySQL while still logging any potential violations. 
+    - **This is for testing only. Please contact Oracle MySQL Support for Production guidance.**
+
+    ```bash
+    <copy>sudo semanage permissive -a mysqld_t</copy>
+    ```
+
+    - Restart MySQL 
+
+    ```bash
+    <copy>sudo systemctl restart mysqld</copy>
+    ```
+
+7. Run the application as follows (Use your coupute IP address):
 
     http://127.0.0.../sakila-web-php/
 
     ![Sakila Web](./images/sakila-list.png "Sakila Web")
 
-7. Test the application with following examples(Enter seconds, then select **short** or **long** format):
+8. Test the application with following examples(Enter seconds, then select **short** or **long** format):
 
     a. Test Case 1 - Movie Length:
     - Input: 7200 seconds (typical movie)
