@@ -28,7 +28,7 @@ You need a compute instance to connect to perform the database and application t
   
     ![Click compute](./images/click-compute.png "Click compute")
 
-2. Ensure **mysql** compartment is selected, and click click  **Create instance**.
+2. Ensure the compartment is selected, and click click  **Create instance**.
 
      ![Create instance](./images/create-instance.png "Create instance")
 
