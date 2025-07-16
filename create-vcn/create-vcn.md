@@ -240,16 +240,10 @@ In this lab, you will be guided through the following tasks:
 
 You may now **proceed to the next lab**.
 
-## Learn More
-
-- [HeatWave User Guide](https://dev.mysql.com/doc/heatwave/en/)
-
-- [HeatWave on OCI User Guide](https://docs.oracle.com/en-us/iaas/mysql-database/index.html)
-
-- [MySQL Documentation](https://dev.mysql.com/)
-
 ## Acknowledgements
 
-- **Author** - Aijaz Fatima, Product Manager
-- **Contributors** - Mandy Pang, Senior Principal Product Manager
-- **Last Updated By/Date** - Aijaz Fatima, Product Manager, August 2024
+- **Author** - Perside Foster, MySQL Principal Solution Engineering
+- **Contributors** 
+- Nick Mader, MySQL Global Channel Enablement & Strategy Director, 
+- Selena Sanchez, MySQL Staff Solutions Engineer,
+- **Last Updated By/Date** - Perside Foster, MySQL Principal Solution Engineering, July   2025

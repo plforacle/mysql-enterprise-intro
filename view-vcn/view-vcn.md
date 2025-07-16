@@ -2,13 +2,13 @@
 
 ## Introduction
 
-In this lab, you will review your Virtual Cloud Network
+In this lab, you will access your Livelabs comaprtmne and review the pre-created Virtual Cloud Network.
 
 _Estimated Time:_ 5 minutes
 
 ### Objectives
 
-In this lab, you will pre-created View Virtual Cloud Network.
+In this lab, you will review the pre-created View Virtual Cloud Network.
 
 ### Prerequisites
 
@@ -34,7 +34,7 @@ In this lab, you will pre-created View Virtual Cloud Network.
 ## Acknowledgements
 
 - **Author** - Perside Foster, MySQL Principal Solution Engineering
-- **Contributors**
-  - Nick Mader, MySQL Global Channel Enablement & Strategy Director,
-  - Selena Sanchez, MySQL Staff Solutions Engineer,
-- **Last Updated By/Date** - Perside Foster, MySQL Principal Solution Engineering, July  2025
+- **Contributors** 
+- Nick Mader, MySQL Global Channel Enablement & Strategy Director, 
+- Selena Sanchez, MySQL Staff Solutions Engineer,
+- **Last Updated By/Date** - Perside Foster, MySQL Principal Solution Engineering, July   2025

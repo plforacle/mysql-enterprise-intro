@@ -108,6 +108,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Author** - Aijaz Fatima, Product Manager
-- **Contributors** - Mandy Pang, Senior Principal Product Manager
-- **Last Updated By/Date** - Aijaz Fatima, Product Manager, April 2025
+- **Author** - Perside Foster, MySQL Principal Solution Engineering
+- **Contributors** 
+- Nick Mader, MySQL Global Channel Enablement & Strategy Director, 
+- Selena Sanchez, MySQL Staff Solutions Engineer,
+- **Last Updated By/Date** - Perside Foster, MySQL Principal Solution Engineering, July   2025
