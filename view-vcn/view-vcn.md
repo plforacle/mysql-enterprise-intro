@@ -20,12 +20,12 @@ In this lab, you will review the pre-created View Virtual Cloud Network.
 
     ![Select VCN Menu](./images/1-select-vcn-menu.png "Select VCN Menu")
 
-2. Under **Compartment**, enter **The Provided Livelab Compartment Name**  and select it
+2. Under **Compartment**, enter **The Provided Livelab Compartment Name**  and select it 
+
+    Then Click on the existing **VCN**
 
     ![Search VCN Compartment](./images/2-select-vcn-compartment-livelabs.png "Search VCNCompartment")
 
-3. Click on the existing **VCN**
-    ![Select VCN](./images/3-select-vcn.png "Select VCN")
 
 4. Your pre-created VCN will be displayed
 
