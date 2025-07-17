@@ -139,7 +139,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Select public subnet](./images/18-public-vcn-subnet.png "Select public subnet")
 
-5. On the **public subnet-mysql-vcn** page, click **Subnets**.
+5. On the **public subnet-mysql-vcn** page, click **Security**.
 
     ![Select public subnet](./images/19-public-subnet-security.png "Select public subnet")
 
